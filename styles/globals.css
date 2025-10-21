@@ -1,0 +1,158 @@
+/*
+
+|--------------------------------------------------------------------------
+
+| 1. Tailwind V4 Unified Import
+
+|--------------------------------------------------------------------------
+
+| This single import includes all base styles (Preflight), components, and utilities.
+
+*/
+
+@import 'tailwindcss';
+
+@config '../tailwind.config.ts';
+
+/*
+
+|--------------------------------------------------------------------------
+
+| 2. Define Custom CSS Variables for Theming (HSL Values)
+
+|--------------------------------------------------------------------------
+
+| These variables are read by the 'hsl(var(--...))' definitions in your
+
+| tailwind.config.ts.
+
+*/
+
+@layer base {
+  :root {
+    /* -- LIGHT MODE VARIABLES -- */
+
+    --background: 0 0% 100%; /* white */
+
+    --foreground: 222.2 47.4% 11.2%; /* near black */
+
+    --muted: 210 40% 96.1%;
+
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --card: 0 0% 100%;
+
+    --card-foreground: 222.2 47.4% 11.2%;
+
+    --border: 214.3 31.8% 91.4%; /* light gray border */
+
+    --input: 214.3 31.8% 91.4%;
+
+    /* Primary (Used for CTA buttons, accents - currently near black/dark blue) */
+
+    --primary: 222.2 47.4% 11.2%;
+
+    --primary-foreground: 210 40% 98%; /* text on primary: white */
+
+    --secondary: 210 40% 96.1%;
+
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --accent: 210 40% 96.1%;
+
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+
+    --destructive-foreground: 210 40% 98%;
+
+    --ring: 222.2 47.4% 11.2%;
+
+    --radius: 0.5rem; /* Border radius default */
+  }
+
+  /*
+
+   * Dark mode is activated when 'next-themes' adds the 'dark' class
+
+   * to the <html> element.
+
+   */
+
+  .dark {
+    /* -- DARK MODE VARIABLES -- */
+
+    --background: 222.2 47.4% 11.2%; /* dark navy/near black */
+
+    --foreground: 210 40% 98%; /* near white */
+
+    --muted: 217.2 32.6% 17.5%;
+
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --card: 222.2 47.4% 11.2%;
+
+    --card-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%; /* darker gray border */
+
+    --input: 217.2 32.6% 17.5%;
+
+    /* Primary (Used for CTA buttons - currently near white/light gray) */
+
+    --primary: 210 40% 98%;
+
+    --primary-foreground: 222.2 47.4% 11.2%; /* text on primary: dark navy */
+
+    --secondary: 217.2 32.6% 17.5%;
+
+    --secondary-foreground: 210 40% 98%;
+
+    --accent: 217.2 32.6% 17.5%;
+
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+
+    --destructive-foreground: 210 40% 98%;
+
+    --ring: 217.2 32.6% 17.5%;
+  }
+}
+
+/*
+
+|--------------------------------------------------------------------------
+
+| 3. Apply Global Base Styles (Using @apply)
+
+|--------------------------------------------------------------------------
+
+| This applies the primary theme variables to the body and ensures borders
+
+| use the theme color.
+
+*/
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    /* These apply the theme variables defined in :root or .dark */
+
+    @apply bg-background text-foreground;
+
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  /* Example: Headings reset (for better control after Preflight) */
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply mt-0 mb-2 font-bold;
+  }
+}
