@@ -156,3 +156,95 @@
     @apply mt-0 mb-2 font-bold;
   }
 }
+
+/*
+|--------------------------------------------------------------------------
+| 4. Prism Syntax Highlighting Styles (THEME AWARE)
+|--------------------------------------------------------------------------
+*/
+@layer components {
+  /* Common styles for all code blocks */
+  pre[class*='language-'],
+  code[class*='language-'] {
+    @apply overflow-auto rounded-lg p-4 text-sm;
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    line-height: 1.5;
+  }
+
+  /* Dark Theme for Code Blocks (Default) */
+  pre[class*='language-'] {
+    background-color: #272822; /* Dark background */
+    color: #f8f8f2; /* Light text */
+    border: 1px solid #383a42;
+  }
+
+  /* Light Theme Override (When outside .dark) */
+  .prose :not(.dark) pre[class*='language-'] {
+    background-color: #f5f2f0; /* Light background */
+    color: #383a42; /* Dark text */
+    border: 1px solid #e0e0e0;
+  }
+
+  /* Prism tokens - adjust colors for contrast */
+  .token.comment,
+  .token.prolog,
+  .token.doctype,
+  .token.cdata {
+    color: #8292a2;
+  }
+  .token.punctuation {
+    color: #f8f8f2;
+  }
+  .token.namespace {
+    opacity: 0.7;
+  }
+  .token.property,
+  .token.tag,
+  .token.boolean,
+  .token.number,
+  .token.constant,
+  .token.symbol,
+  .token.deleted {
+    color: #ae81ff;
+  }
+  .token.selector,
+  .token.attr-name,
+  .token.string,
+  .token.char,
+  .token.builtin,
+  .token.inserted {
+    color: #a6e22e;
+  }
+  .token.operator,
+  .token.entity,
+  .token.url,
+  .language-css .token.string,
+  .style .token.string,
+  .token.variable {
+    color: #f8f8f2;
+  }
+  .token.atrule,
+  .token.attr-value,
+  .token.keyword {
+    color: #f92672;
+  }
+  .token.function,
+  .token.class-name {
+    color: #e6db74;
+  }
+  .token.regex,
+  .token.important {
+    color: #fd971f;
+  }
+}
+
+/*
+|--------------------------------------------------------------------------
+| 5. ToC Sidebar Scroll Styling
+|--------------------------------------------------------------------------
+| Ensures the sticky sidebar doesn't overlap the header when scrolling.
+*/
+.toc-sidebar {
+  /* Adjusting for the sticky navbar height (H-14 in our layout) */
+  top: calc(theme('spacing.10') + theme('spacing.4'));
+}
