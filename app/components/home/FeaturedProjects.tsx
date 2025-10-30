@@ -5,6 +5,7 @@ import ProjectCard from '../ui/ProjectCard';
 interface Project {
   slug: string;
   title: string;
+  href: string;
   description: string;
   tags: string[];
 }

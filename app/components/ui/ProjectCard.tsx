@@ -2,13 +2,14 @@ import Link from 'next/link';
 
 interface ProjectCardProps {
   slug: string;
+  href: string;
   title: string;
   description: string;
   tags: string[];
 }
 
 export default function ProjectCard({
-  slug,
+  href,
   title,
   description,
   tags,
@@ -39,7 +40,7 @@ export default function ProjectCard({
       <div className="flex gap-4">
         {/* Placeholder: Use your actual Button component here */}
         <Link
-          href={`/projects/${slug}`}
+          href={`/${href}`}
           className="bg-primary text-primary-foreground hover:bg-primary/90 inline-flex h-10 items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors"
         >
           View Demo

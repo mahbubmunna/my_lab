@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "-": "^0.0.1",
+    "@google/genai": "^1.28.0",
     "date-fns": "^4.1.0",
     "gray-matter": "^4.0.3",
     "hast-util-to-string": "^3.0.1",
@@ -24,11 +25,11 @@
     "remark": "^15.0.1",
     "remark-html": "^16.0.1",
     "remark-rehype": "^11.1.2",
-    "remark-slug": "^8.0.0",
     "remark-toc": "^9.0.0",
     "sass": "^1.93.2",
     "styled-components": "^6.1.19",
-    "unist-util-visit": "^5.0.0"
+    "unist-util-visit": "^5.0.0",
+    "zustand": "^5.0.8"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
