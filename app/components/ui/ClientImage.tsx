@@ -30,7 +30,7 @@ export default function ClientImage({
   return (
     <Image
       // Use the stateful source
-      src={imageSrc}
+      src={'/profile_picture.png'}
       // The event handler is now safely contained within this Client Component
       onError={handleError}
       {...props}

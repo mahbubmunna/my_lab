@@ -7,11 +7,14 @@ import FeaturedProjects from './components/home/FeaturedProjects';
 // ----------------------------------------------------------------------
 // Mock Data (Phase 2) - This would be fetched from lib/data or DB in production
 // ----------------------------------------------------------------------
+//
+//
 const mockProjects = [
   {
     slug: 'ecommerce-demo',
     title: 'E-commerce Platform Demo',
-    href: 'ecommerce',
+    // FIX 1: External URL for E-commerce
+    href: 'https://trendtrove-zeta.vercel.app/',
     description:
       'A full-featured e-commerce platform with product listings, a shopping cart, and a secure checkout process.',
     tags: ['React', 'Node.js', 'Express', 'MongoDB'],
@@ -24,13 +27,22 @@ const mockProjects = [
       'An intelligent notes app that uses AI to automatically summarize and tag your notes for easy organization and retrieval.',
     tags: ['Python', 'Flask', 'TensorFlow', 'OpenAI API'],
   },
+  // {
+  //   slug: 'project-tool',
+  //   title: 'Agile Project Management Tool',
+  //   href: 'project-tool',
+  //   description:
+  //     'A collaborative tool for task management and team coordination, designed with agile principles in mind.',
+  //   tags: ['Vue.js', 'Firebase', 'GraphQL', 'dnd-kit'],
+  // },
   {
-    slug: 'project-tool',
-    title: 'Agile Project Management Tool',
-    href: 'project-tool',
+    // Formerly 'Agile Project Management Tool' URL: https://stayeaze.vercel.app/
+    slug: 'property-rent-app', // New slug for internal ID/tracking
+    title: 'Stayeaze: Property Rental Management', // Updated Title
+    href: 'https://stayeaze.vercel.app/', // External URL
     description:
-      'A collaborative tool for task management and team coordination, designed with agile principles in mind.',
-    tags: ['Vue.js', 'Firebase', 'GraphQL', 'dnd-kit'],
+      'A prototype property rental application featuring tenant management, lease tracking, and an optimized user dashboard for property owners.', // Updated Description
+    tags: ['Vue.js', 'Firebase', 'GraphQL', 'dnd-kit'], // Retaining original tech stack for context
   },
 ];
 
