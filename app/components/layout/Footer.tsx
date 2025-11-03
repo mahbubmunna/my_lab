@@ -8,14 +8,14 @@ export default function Footer({ className }: { className?: string }) {
   const currentYear = new Date().getFullYear();
 
   const socialLinks = [
-    { href: 'https://github.com/yourusername', icon: Github, label: 'GitHub' },
+    { href: 'https://github.com/mahbubmunna', icon: Github, label: 'GitHub' },
     {
-      href: 'https://linkedin.com/in/yourusername',
+      href: 'https://linkedin.com/in/munnacs',
       icon: Linkedin,
       label: 'LinkedIn',
     },
     {
-      href: 'https://twitter.com/yourusername',
+      href: 'https://twitter.com/munnacs',
       icon: Twitter,
       label: 'Twitter',
     },

@@ -13,7 +13,6 @@ const mockProjects = [
   {
     slug: 'ecommerce-demo',
     title: 'E-commerce Platform Demo',
-    // FIX 1: External URL for E-commerce
     href: 'https://trendtrove-zeta.vercel.app/',
     description:
       'A full-featured e-commerce platform with product listings, a shopping cart, and a secure checkout process.',
@@ -27,22 +26,21 @@ const mockProjects = [
       'An intelligent notes app that uses AI to automatically summarize and tag your notes for easy organization and retrieval.',
     tags: ['Python', 'Flask', 'TensorFlow', 'OpenAI API'],
   },
-  // {
-  //   slug: 'project-tool',
-  //   title: 'Agile Project Management Tool',
-  //   href: 'project-tool',
-  //   description:
-  //     'A collaborative tool for task management and team coordination, designed with agile principles in mind.',
-  //   tags: ['Vue.js', 'Firebase', 'GraphQL', 'dnd-kit'],
-  // },
   {
-    // Formerly 'Agile Project Management Tool' URL: https://stayeaze.vercel.app/
-    slug: 'property-rent-app', // New slug for internal ID/tracking
-    title: 'Stayeaze: Property Rental Management', // Updated Title
-    href: 'https://stayeaze.vercel.app/', // External URL
+    slug: 'property-rent-app',
+    title: 'Stayease: Property Rental Management',
+    href: 'https://stayeaze.vercel.app/',
     description:
-      'A prototype property rental application featuring tenant management, lease tracking, and an optimized user dashboard for property owners.', // Updated Description
-    tags: ['Vue.js', 'Firebase', 'GraphQL', 'dnd-kit'], // Retaining original tech stack for context
+      'A prototype property rental application featuring tenant management, lease tracking, and an optimized user dashboard for property owners.',
+    tags: ['Vue.js', 'Firebase', 'GraphQL', 'dnd-kit'],
+  },
+  {
+    slug: 'mobile-app-showcase',
+    title: 'Mobile App Showcase',
+    href: 'https://mahbubmunna.github.io/projects/',
+    description:
+      'A curated collection of my published and prototype mobile applications demonstrating cross-platform development and innovative UX design.',
+    tags: ['Flutter', 'Kotlin', 'Jetpack Compose', 'React Native'],
   },
 ];
 

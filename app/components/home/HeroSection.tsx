@@ -18,8 +18,8 @@ export default function HeroSection() {
 
           <p className="text-muted-foreground max-w-xl text-lg">
             Passionate about building digital products and solving problems. I
-            specialize in creating modern, user-friendly web applications across
-            the entire stack.
+            specialize in creating modern, intelligent, and user-friendly web
+            and mobile applications powered by AI across the entire stack..
           </p>
 
           {/* CTA Buttons (Styled like the design) */}
@@ -31,7 +31,7 @@ export default function HeroSection() {
               View Resume
             </Link>
             <Link
-              href="/contact"
+              href="/about"
               className="bg-secondary text-secondary-foreground hover:bg-secondary/80 border-border/50 inline-flex h-12 items-center justify-center rounded-lg border px-8 py-3 text-lg font-medium transition-colors"
             >
               Get in Touch
