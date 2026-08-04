@@ -4,50 +4,77 @@ import TimelineEntry from '../components/about/TimelineEntry';
 import { Dot } from 'lucide-react';
 import SkillProgressBar from '../components/about/SkillProgressBar';
 
-// --- MOCK DATA (Updated with Md Mahbub Hassan's details) ---
 const experienceData = [
-  // ... (Your detailed experience data as provided previously)
   {
-    title: 'Technical PM & Fullstack Developer (AI Systems)',
-    subtitle: 'Fair Pattern',
-    period: 'June 2023 – Present',
+    title: 'Technical Lead',
+    subtitle: 'FairPattern — New York, USA (Remote)',
+    period: 'Jun 2023 – Present',
     description: [
-      'Led fullstack and AI system initiatives, bridging backend logic, frontend design, and intelligent automation.',
-      'Integrated OpenAI APIs with FastAPI services for workflow and document automation.',
-      'Developed React + Node.js dashboards with AI recommendation modules.',
-      'Streamlined deployments with Dockerized microservices and CI/CD.',
-      'Mentored developers on implementing AI models and scalable architecture.',
+      'Own full-stack and AI delivery on ezyglobal.ai: FastAPI services, Next.js frontend, PostgreSQL/Redis data layer, Celery async processing, and LLM/RAG integration with self-hosted Llama 3 (vLLM).',
+      'Architected critical modules of an enterprise Document Management System (backend + Flutter mobile client with optimized PDF handling).',
+      'Built server-driven UI for the DealerAppVantage dealer platform — menus and dashboards rendered dynamically from backend configuration.',
+      'Built VSM, a vehicle service-management product, full-stack in Dart with Serverpod + Flutter.',
+      'Lead design, frontend, backend, and mobile teams as technical program manager.',
     ],
   },
   {
-    title: 'Senior Fullstack Engineer',
-    subtitle: 'Bigspace Ring',
-    period: '2021 – 2023',
+    title: 'Senior Software Engineer (Contract)',
+    subtitle: 'NETMARK — Bergen, Norway (Remote)',
+    period: 'May 2023 – Aug 2023',
     description: [
-      'Developed fintech and blockchain solutions, preparing backend and analytics systems for AI integration.',
-      'Designed modular Node.js and React applications.',
-      'Improved backend scalability with caching and optimized APIs.',
+      'Delivered two React Native apps for the Norwegian market: BilDialog (car servicing) and KitchenQ (restaurant orders with Bluetooth kitchen printing).',
     ],
   },
   {
-    title: 'Software Engineer (Mobile & AI-Assisted Search)',
-    subtitle: 'Advanced Apps Bangladesh Limited',
-    period: '2019 – 2021',
+    title: 'Senior Software Engineer (Part-time)',
+    subtitle: 'Bigspace Ring — Remote',
+    period: 'Apr 2021 – Oct 2023',
     description: [
-      'Built Flutter and Android apps with robust architecture, focusing on performance and AI-assisted search capabilities.',
+      'Contributed across Web3 and consumer products: HMP blockchain wallet, Pawtocol NFT tracker (React Native), Slipper (Flutter), and a grocery-ordering app (Expo) built end to end.',
+      'Raised code quality via separation of concerns, tests on critical components, and shared component libraries.',
     ],
   },
   {
-    title: 'Mobile Engineer',
-    subtitle: 'Wizdoor Incorporation',
-    period: '2017 – 2019',
-    description: 'Focused on developing and maintaining mobile applications.',
+    title: 'Android Software Engineer',
+    subtitle: 'AppCoder.xyz — Dhaka (Remote)',
+    period: 'Apr 2021 – Apr 2023',
+    description: [
+      'Core engineer on Ratio Launcher (system-level Android launcher — Kotlin, Jetpack, Room) and feature work on the tawk.to live-chat Android app.',
+      'Built complete apps end to end: Darrigo Brothers Check-In (Flutter), Oway Driver (React Native, Redux, Expo→bare), plus TeamWave CRM features (Flutter, BLoC).',
+    ],
   },
   {
-    title: 'Junior Android Developer',
-    subtitle: 'TheCoffeeCoders',
-    period: '2016 – 2017',
-    description: 'Initial experience in Android development.',
+    title: 'Mobile Developer (Team Lead)',
+    subtitle: 'Advanced Apps Bangladesh — Dhaka',
+    period: 'Feb 2019 – Apr 2021',
+    description: [
+      'Led a 10-engineer mobile team: architecture, code standards, and client communication.',
+      'Shipped 9+ apps across e-commerce, food delivery, courier, streaming, and healthcare.',
+    ],
+  },
+  {
+    title: 'Flutter Developer (Part-time)',
+    subtitle: 'Ibix Global Tech — Jeddah, KSA (Remote)',
+    period: 'Jun 2020 – Dec 2020',
+    description: [
+      'Built features for Sunbulah Driver (delivery/maps) and Sunbulah Home (marketplace); refactored the existing codebase.',
+    ],
+  },
+  {
+    title: 'Android Developer',
+    subtitle: 'Wizdoor Inc. — Dhaka',
+    period: 'Jul 2017 – Jan 2019',
+    description: [
+      'Early engineer at a social-media startup: built Wizchat (messenger) and the Wizdoor social app against a Django backend.',
+    ],
+  },
+  {
+    title: 'Android Developer',
+    subtitle: 'TheCoffeeCoders — Dhaka',
+    period: 'Feb 2016 – Jun 2017',
+    description: [
+      'Built features and custom UIs from scratch, maintained the CI process, and improved the existing architecture.',
+    ],
   },
 ];
 
@@ -65,53 +92,57 @@ const educationData = [
 // Note: SkillProgressBar component needs to be created in components/about/
 const skillsData = {
   'Programming Languages': [
-    { skill: 'TypeScript', level: 95 },
     { skill: 'Python', level: 90 },
-    { skill: 'Dart', level: 85 },
-    { skill: 'Java/Kotlin', level: 75 },
+    { skill: 'TypeScript', level: 90 },
+    { skill: 'Dart', level: 90 },
+    { skill: 'Kotlin / Java', level: 85 },
   ],
-  'AI & ML Tools': [
-    { skill: 'OpenAI APIs', level: 90 },
-    { skill: 'LangChain', level: 85 },
-    { skill: 'RAG Pipelines', level: 80 },
-    { skill: 'LoRA / PEFT', level: 70 },
+  'AI & LLM Engineering': [
+    { skill: 'Self-hosted LLMs (vLLM, Llama 3)', level: 90 },
+    { skill: 'AI Agents (LangGraph, CrewAI)', level: 85 },
+    { skill: 'RAG Pipelines (LangChain, LlamaIndex)', level: 90 },
+    { skill: 'Voice AI (Whisper, Kokoro TTS)', level: 85 },
     { skill: 'Prompt Engineering', level: 95 },
   ],
   'Web & Backend': [
-    { skill: 'React.js / Next.js', level: 95 },
-    { skill: 'FastAPI', level: 90 },
-    { skill: 'Node.js / Express.js', level: 85 },
-    { skill: 'Tailwind CSS', level: 98 },
-    { skill: 'Redux / Zustand', level: 80 },
+    { skill: 'React.js / Next.js', level: 90 },
+    { skill: 'FastAPI / SQLAlchemy', level: 90 },
+    { skill: 'PostgreSQL / Redis', level: 85 },
+    { skill: 'Celery / Async Pipelines', level: 85 },
+    { skill: 'Tailwind CSS', level: 90 },
   ],
-  'Mobile & Architecture': [
-    { skill: 'Flutter', level: 85 },
-    { skill: 'React Native', level: 75 },
-    { skill: 'Microservices', level: 90 },
+  'Mobile & Infrastructure': [
+    { skill: 'Flutter (Riverpod, BLoC, MobX)', level: 95 },
+    { skill: 'Android (Kotlin, Jetpack)', level: 90 },
+    { skill: 'React Native (Redux, Expo)', level: 85 },
     { skill: 'Docker / CI/CD', level: 85 },
-    { skill: 'PostgreSQL / MongoDB', level: 80 },
+    { skill: 'DigitalOcean / MinIO', level: 80 },
   ],
 };
 
 const aiExperienceData = [
-  'Built and deployed intelligent agents using **LangChain and OpenAI APIs** for automation and customer interaction.',
-  'Integrated **GPT-based assistants** into Flutter and React apps for user support and smart recommendations.',
-  'Developed microservices using **FastAPI** to handle AI inference and data workflows.',
-  'Designed **RAG pipelines** with vector databases for contextual document retrieval.',
-  'Experimented with **fine-tuning (LoRA, PEFT)** to improve domain-specific model accuracy.',
+  'Built the AI layer of <b>ezyglobal.ai</b>: RAG over private business-setup knowledge with grounded citations, served by <b>self-hosted Llama 3 on vLLM</b> — no third-party AI APIs, privacy-first by design.',
+  'Built a <b>real-time voice AI assistant</b> running fully on local models — streaming <b>Whisper</b> STT, a retrieval-grounded LLM brain, and sentence-streamed <b>Kokoro TTS</b> — on a single consumer GPU.',
+  'Designed <b>AI agent and tool-calling workflows</b> with LangChain, LlamaIndex, and CrewAI for document intelligence and automation.',
+  'Integrated <b>vision AI (DeepFace)</b> for identity verification flows.',
+  'Developed <b>FastAPI microservices</b> with Celery/Redis to handle AI inference, document pipelines, and async workloads.',
+  'Run a local AI lab (RTX GPU workstation) for evaluating open-weight models, quantization, and serving stacks.',
 ];
 
 // --- METADATA ---
 export const metadata: Metadata = {
-  title: 'Resume | Md Mahbub Hassan - AI Engineer',
+  title: 'Resume | Mahbub Hassan - AI, Full-Stack & Mobile Engineer',
   description:
-    'Official resume for Md Mahbub Hassan, an AI Engineer and Senior Fullstack Developer specializing in LLMs, LangChain, Next.js, and scalable architecture.',
+    'Official resume for Mahbub Hassan — 9+ years across mobile, full-stack, and generative AI engineering: self-hosted LLMs, AI agents, RAG, real-time voice AI, Next.js, FastAPI, Flutter.',
   keywords: [
     'AI Engineer',
-    'Md Mahbub Hassan',
+    'Generative AI',
+    'Mahbub Hassan',
     'Senior Full-Stack',
     'Next.js',
+    'FastAPI',
     'LangChain',
+    'Flutter',
     'Mobile Developer',
   ],
 };
@@ -125,19 +156,22 @@ export default function AboutPage() {
       {/* 1. Header and Contact */}
       <header className="border-border/50 border-b py-4">
         <h1 className="text-foreground mb-1 text-4xl font-extrabold tracking-tight">
-          Md Mahbub Hassan
+          Mahbub Hassan
         </h1>
         <p className="text-primary mb-3 text-xl font-semibold">
-          AI Engineer | Senior Fullstack & Mobile Developer
+          AI Engineer | Senior Full-Stack & Mobile Engineer
         </p>
         <p className="text-muted-foreground max-w-4xl leading-relaxed">
-          AI Engineer with 9+ years of software development experience, merging
-          expertise in fullstack and mobile engineering with practical AI
-          implementation. Specialized in integrating large language models
-          (LLMs), building LangChain pipelines, and developing AI-enhanced
-          systems using FastAPI, Node.js, and React. Proven ability to architect
-          scalable solutions and lead teams to deliver intelligent, data-driven
-          products.
+          Engineer with 9+ years shipping production software — mobile apps,
+          backends, and full-stack platforms — focused for the last 2+ years on
+          generative AI: building AI agents, tool-calling workflows, document
+          intelligence, and real-time voice AI. Built the AI layer of
+          ezyglobal.ai on self-hosted Llama 3 (vLLM) with extensive production
+          RAG experience underneath: chunking strategy, retrieval quality,
+          grounded citations, and privacy-first deployment. Currently a
+          Technical Lead delivering products for US and UAE clients — with the
+          engineering depth to ship AI features users actually touch, across
+          web, mobile, and voice.
         </p>
         <div className="text-foreground/80 mt-3 flex flex-wrap gap-x-6 gap-y-1 text-sm font-medium">
           <span>Mobile: +8801521214964</span>
@@ -149,6 +183,14 @@ export default function AboutPage() {
             className="hover:text-primary transition-colors"
           >
             GitHub: github.com/mahbubmunna
+          </a>
+          <a
+            href="https://linkedin.com/in/munnacs"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-primary transition-colors"
+          >
+            LinkedIn: linkedin.com/in/munnacs
           </a>
         </div>
       </header>

@@ -3,8 +3,7 @@ import ClientImage from '../ui/ClientImage';
 // Import the ClientImage component instead of the default Next.js Image
 
 export default function HeroSection() {
-  // Placeholder image URL for the Avatar, styled to look like the design
-  const avatarUrl = 'http://127.0.0.1:8000/image';
+  const avatarUrl = '/profile_picture.png';
 
   return (
     <section className="container mx-auto px-4 py-16 md:py-24">
@@ -12,14 +11,16 @@ export default function HeroSection() {
         {/* Text and CTA Column */}
         <div className="order-2 space-y-6 lg:order-1">
           <h1 className="text-foreground text-4xl leading-tight font-extrabold sm:text-5xl lg:text-6xl">
-            Hello, I&apos;m <span className="text-primary">Mahbub Hassan</span>,
-            a Full-Stack Developer
+            Hello, I&apos;m <span className="text-primary">Mahbub Hassan</span>{' '}
+            — AI, Full-Stack &amp; Mobile Engineer
           </h1>
 
           <p className="text-muted-foreground max-w-xl text-lg">
-            Passionate about building digital products and solving problems. I
-            specialize in creating modern, intelligent, and user-friendly web
-            and mobile applications powered by AI across the entire stack..
+            Engineer with 9+ years shipping production software — mobile apps,
+            backends, and full-stack platforms — focused for the last 2+ years
+            on generative AI: AI agents, RAG systems, and real-time voice
+            assistants running on self-hosted models. I take products from idea
+            to production across the entire stack.
           </p>
 
           {/* CTA Buttons (Styled like the design) */}
