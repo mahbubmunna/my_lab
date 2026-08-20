@@ -232,12 +232,12 @@ export const caseStudies: CaseStudy[] = [
         screens: [
           {
             src: '/projects/causelist-scraper-ops.png',
-            alt: 'Scraper operations health dashboard',
+            alt: 'Scraper operations and system health dashboard',
             label: 'scraper operations',
             caption:
-              'Scraper operations health — daemon status, run history, and per-division scrape monitoring.',
+              'Operations dashboard — scraper runs, division-by-division sync progress, and system health.',
             width: 1600,
-            height: 1285,
+            height: 1280,
           },
           {
             src: '/projects/causelist-payments.png',
