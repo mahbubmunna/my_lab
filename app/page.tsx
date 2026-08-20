@@ -22,54 +22,20 @@ const mockProjects = [
   {
     slug: 'mama-desk',
     title: 'Mama Desk — Autonomous AI Front Desk Employee',
-    href: 'https://github.com/mahbubmunna',
+    href: 'projects/mama-desk',
     description:
-      'A domain-agnostic AI front-desk platform, debuting in healthcare with Hope Medical Clinic: natural voice dialogues with sub-400ms latency, dynamic patient intake and symptom triage, live doctor-calendar scheduling, and schema-validated EHR record extraction — built on real-time speech streaming, RAG knowledge retrieval, and multi-agent tool delegation. Evolved from my local-first voice RAG assistant (streaming Whisper STT, retrieval-grounded Llama 3.1, sentence-streamed Kokoro TTS on a single consumer GPU).',
+      'A domain-agnostic AI front-desk platform, debuting in healthcare with Hope Medical Clinic: natural voice dialogues with sub-400ms latency, dynamic patient intake and symptom triage, live doctor-calendar scheduling, and schema-validated EHR record extraction — built on real-time speech streaming, RAG knowledge retrieval, and multi-agent tool delegation.',
     tags: ['Python', 'Whisper', 'Llama 3.1', 'Kokoro TTS', 'Multi-Agent', 'FastAPI', 'WebSockets'],
     status: 'In Development',
-    images: [
-      {
-        src: '/projects/mamadesk-operations-center.png',
-        alt: 'Mama Desk operations center — live agent coordination matrix and intake stream',
-        label: 'mama-desk / operations center',
-      },
-      {
-        src: '/projects/mamadesk-live-call.png',
-        alt: 'Live AI front-desk voice call with real-time intake context',
-        label: 'live AI voice call',
-      },
-      {
-        src: '/projects/mamadesk-ehr-intake.png',
-        alt: 'Structured EHR intake records with AI triage classification and FHIR payload',
-        label: 'structured EHR intake',
-      },
-    ],
   },
   {
     slug: 'causelist-pro',
     title: 'CauseList Pro — Real-Time Court Case Tracking',
-    href: 'https://github.com/mahbubmunna',
+    href: 'projects/causelist-pro',
     description:
       'A cause-list scraper and case-tracking system for Bangladeshi legal advocates: automated daily Supreme Court / High Court scraping, FastAPI backend, instant Firebase push notifications, and a bilingual Flutter app with an AI legal assistant — plus an admin portal for scraper operations, payments, and broadcasts. Built end to end solo.',
     tags: ['Flutter', 'Riverpod', 'FastAPI', 'BeautifulSoup4', 'Firebase'],
     status: 'In Development',
-    images: [
-      {
-        src: '/projects/causelist-live-board.png',
-        alt: 'CauseList Pro mobile app — live cause-list board',
-        portrait: true,
-      },
-      {
-        src: '/projects/causelist-ai-law-finder.png',
-        alt: 'CauseList Pro AI law finder chat',
-        portrait: true,
-      },
-      {
-        src: '/projects/causelist-admin-explorer.png',
-        alt: 'CauseList Pro admin portal — master cause list explorer',
-        label: 'causelist-pro / admin portal',
-      },
-    ],
   },
   {
     slug: 'ratio-launcher',
