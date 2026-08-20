@@ -17,22 +17,59 @@ const mockProjects = [
     description:
       'Full-stack platform for UAE company licensing: Next.js frontend, FastAPI backend with Celery/Redis async pipelines, and a private-knowledge RAG layer served by self-hosted Llama 3 on vLLM — deployed with Docker on DigitalOcean.',
     tags: ['Next.js', 'FastAPI', 'PostgreSQL', 'vLLM', 'Llama 3', 'LangChain'],
+    status: 'Live in Production',
   },
   {
-    slug: 'voice-rag-assistant',
-    title: 'Real-Time Voice RAG Assistant — Local-First Voice AI',
+    slug: 'mama-desk',
+    title: 'Mama Desk — Autonomous AI Front Desk Employee',
     href: 'https://github.com/mahbubmunna',
     description:
-      'A real-time voice assistant running fully on local models: streaming Whisper speech-to-text, a retrieval-grounded LLM brain (Llama 3.1), and sentence-streamed Kokoro TTS — all on a single consumer GPU, with no cloud APIs.',
-    tags: ['Python', 'Whisper', 'Llama 3.1', 'Kokoro TTS', 'FastAPI', 'WebSockets'],
+      'A domain-agnostic AI front-desk platform, debuting in healthcare with Hope Medical Clinic: natural voice dialogues with sub-400ms latency, dynamic patient intake and symptom triage, live doctor-calendar scheduling, and schema-validated EHR record extraction — built on real-time speech streaming, RAG knowledge retrieval, and multi-agent tool delegation. Evolved from my local-first voice RAG assistant (streaming Whisper STT, retrieval-grounded Llama 3.1, sentence-streamed Kokoro TTS on a single consumer GPU).',
+    tags: ['Python', 'Whisper', 'Llama 3.1', 'Kokoro TTS', 'Multi-Agent', 'FastAPI', 'WebSockets'],
+    status: 'In Development',
+    images: [
+      {
+        src: '/projects/mamadesk-operations-center.png',
+        alt: 'Mama Desk operations center — live agent coordination matrix and intake stream',
+        label: 'mama-desk / operations center',
+      },
+      {
+        src: '/projects/mamadesk-live-call.png',
+        alt: 'Live AI front-desk voice call with real-time intake context',
+        label: 'live AI voice call',
+      },
+      {
+        src: '/projects/mamadesk-ehr-intake.png',
+        alt: 'Structured EHR intake records with AI triage classification and FHIR payload',
+        label: 'structured EHR intake',
+      },
+    ],
   },
   {
     slug: 'causelist-pro',
     title: 'CauseList Pro — Real-Time Court Case Tracking',
     href: 'https://github.com/mahbubmunna',
     description:
-      'A cause-list scraper and case-tracking system for Bangladeshi legal advocates: automated daily Supreme Court / High Court scraping, FastAPI backend, instant Firebase push notifications, and a bilingual Flutter app — built end to end solo.',
+      'A cause-list scraper and case-tracking system for Bangladeshi legal advocates: automated daily Supreme Court / High Court scraping, FastAPI backend, instant Firebase push notifications, and a bilingual Flutter app with an AI legal assistant — plus an admin portal for scraper operations, payments, and broadcasts. Built end to end solo.',
     tags: ['Flutter', 'Riverpod', 'FastAPI', 'BeautifulSoup4', 'Firebase'],
+    status: 'In Development',
+    images: [
+      {
+        src: '/projects/causelist-live-board.png',
+        alt: 'CauseList Pro mobile app — live cause-list board',
+        portrait: true,
+      },
+      {
+        src: '/projects/causelist-ai-law-finder.png',
+        alt: 'CauseList Pro AI law finder chat',
+        portrait: true,
+      },
+      {
+        src: '/projects/causelist-admin-explorer.png',
+        alt: 'CauseList Pro admin portal — master cause list explorer',
+        label: 'causelist-pro / admin portal',
+      },
+    ],
   },
   {
     slug: 'ratio-launcher',
@@ -41,6 +78,7 @@ const mockProjects = [
     description:
       'Core engineer on a system-level Android launcher on the Play Store — music player, calculator, text editor, and home-screen widget tools built with native Kotlin and Jetpack.',
     tags: ['Kotlin', 'Jetpack', 'Room', 'Android'],
+    status: 'Live on Play Store',
   },
   {
     slug: 'ai-notes-app',

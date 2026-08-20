@@ -1,6 +1,6 @@
 'use client';
 
-import ProjectCard from '../ui/ProjectCard';
+import ProjectCard, { ProjectImage } from '../ui/ProjectCard';
 
 interface Project {
   slug: string;
@@ -8,6 +8,8 @@ interface Project {
   href: string;
   description: string;
   tags: string[];
+  images?: ProjectImage[];
+  status?: string;
 }
 
 interface FeaturedProjectsProps {
