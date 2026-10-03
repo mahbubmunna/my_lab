@@ -30,7 +30,7 @@ export const caseStudies: CaseStudy[] = [
     kicker: 'Voice AI · Multi-Agent · Healthcare',
     status: 'In Development',
     oneLiner:
-      'An autonomous AI front-desk employee. Natural voice dialogues with sub-400ms latency, dynamic patient intake and symptom triage, live doctor-calendar scheduling, and schema-validated EHR extraction — debuting in healthcare with Hope Medical Clinic.',
+      'An autonomous AI front-desk employee. Natural voice dialogues answering in about a second on fully local models, dynamic patient intake and symptom triage, live doctor-calendar scheduling, and schema-validated EHR extraction — debuting in healthcare with Hope Medical Clinic.',
     tags: [
       'Python',
       'Whisper',
@@ -42,7 +42,7 @@ export const caseStudies: CaseStudy[] = [
     ],
     github: 'https://github.com/mahbubmunna',
     stats: [
-      { value: '<400ms', label: 'Voice round-trip latency' },
+      { value: '~1s', label: 'Voice response, one local GPU' },
       { value: '24/7', label: 'Always-on digital workforce' },
       { value: '4 agents', label: 'Reception · knowledge · scheduling · EHR' },
       { value: 'FHIR R4', label: 'Schema-validated EHR output' },
@@ -50,7 +50,7 @@ export const caseStudies: CaseStudy[] = [
     capabilities: [
       {
         title: 'Real-time voice dialogue',
-        body: 'Streaming speech-to-text, a retrieval-grounded LLM brain, and sentence-streamed TTS keep the conversation loop under 400ms — it feels like talking to a person, not a phone tree.',
+        body: 'Streaming speech-to-text, a retrieval-grounded LLM brain, and sentence-streamed TTS keep each reply to about a second, with no cloud AI APIs. It feels like a conversation, not a phone tree, and the pipeline is built to go faster.',
       },
       {
         title: 'Dynamic intake & symptom triage',

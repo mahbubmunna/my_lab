@@ -24,7 +24,7 @@ const mockProjects = [
     title: 'Mama Desk — Autonomous AI Front Desk Employee',
     href: 'projects/mama-desk',
     description:
-      'A domain-agnostic AI front-desk platform, debuting in healthcare with Hope Medical Clinic: natural voice dialogues with sub-400ms latency, dynamic patient intake and symptom triage, live doctor-calendar scheduling, and schema-validated EHR record extraction — built on real-time speech streaming, RAG knowledge retrieval, and multi-agent tool delegation.',
+      'A domain-agnostic AI front-desk platform, debuting in healthcare with Hope Medical Clinic: natural voice dialogues answering in about a second on fully local models, dynamic patient intake and symptom triage, live doctor-calendar scheduling, and schema-validated EHR record extraction — built on real-time speech streaming, RAG knowledge retrieval, and multi-agent tool delegation.',
     tags: ['Python', 'Whisper', 'Llama 3.1', 'Kokoro TTS', 'Multi-Agent', 'FastAPI', 'WebSockets'],
     status: 'In Development',
   },
