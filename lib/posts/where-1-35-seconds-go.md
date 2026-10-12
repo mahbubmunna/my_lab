@@ -45,7 +45,7 @@ The fix was not clever. I moved Kokoro onto the GPU using its ONNX build. First 
 
 Why did it happen in the first place? Because TTS feels like the "easy" part. You get the model working, it sounds good, and you move on to the interesting problems: retrieval, prompts, agent logic. Nobody profiles the step that already works. That's exactly why it was the problem.
 
-The general lesson is boring and important: **don't guess where the delay is. Time every step.** The simplest way is to log a timestamp at every boundary in the pipeline: end of speech detected, transcript ready, retrieval done, first token, first sentence complete, first audio chunk sent. Once you have those six timestamps per turn, the slow step usually names itself.
+The general lesson is boring and important: **don't guess where the delay is. Time every step.** My method was nothing fancy: plain logs, added on purpose at each boundary in the pipeline. For example: end of speech detected, transcript ready, retrieval done, first token, first sentence complete, first audio chunk sent. Once you have timestamps like these for every turn, the slow step usually names itself. No profiler or tracing platform needed to start.
 
 ## The cold start
 
@@ -70,6 +70,28 @@ This is called endpointing, and it's a genuinely hard trade-off:
 
 Half a second is a reasonable middle. But it means that on a typical turn, more than a third of the wait is the agent doing nothing on purpose.
 
+### How Mama Desk decides you're done
+
+The way you detect the end of a turn matters as much as how long you wait. Mama Desk does it in the caller's browser, not on the server.
+
+The detector is energy-based. While the caller talks, the browser's audio API reports how loud the microphone signal is, frame by frame, as an RMS (root mean square) level. Speech pushes that level up. When it stays below a threshold for about 500 ms, the browser decides the turn is over and the server starts processing.
+
+The common alternative is a model-based voice activity detector, like Silero, running on the server. It listens to the audio and classifies each slice as speech or not speech.
+
+Doing it client-side has real advantages:
+
+- **It costs the server nothing.** My GPU is already shared by Whisper, the LLM and Kokoro. A detector that runs on the caller's device takes no capacity from any of them.
+- **The decision happens where the audio is.** The browser hears the silence first, so it can call the end of the turn without waiting on a round trip to the server.
+- **It's simple.** An energy threshold is a few lines of code, easy to reason about and easy to tune.
+
+It also has limits, and they're worth knowing before you copy it:
+
+- **Loudness is not speech.** An energy detector measures volume, not voice. Steady background noise, like a TV in a waiting room, can keep the level above the threshold so the turn never seems to end. A quiet speaker can fall below it too early.
+- **It can't tell a pause from an ending.** Silence after "my number is" and silence after "thank you" look exactly the same to an energy meter.
+- **The threshold depends on the room.** A level that works with a headset may not work on a laptop mic in a busy reception.
+
+A model-based detector handles the first problem better, because it's trained to tell voices from noise, at the cost of running on every slice of audio. None of these approaches solves the second problem, though. Telling a pause from an ending needs some sense of what was said.
+
 That's an important thing to know, because it changes where you spend effort. Shaving 50 ms off the LLM is real work and barely moves the total. Getting smarter about when the caller has finished (using the content of the sentence, not only the silence) could save hundreds of milliseconds. That's the next problem I want to solve.
 
 ## Think: first token is not the number that matters
@@ -90,7 +112,7 @@ If each step waited for the previous one to fully finish, the wait would be much
 
 What keeps the wait short is streaming:
 
-1. Whisper streams, so the transcript is nearly ready the moment the caller stops.
+1. Whisper works on audio as it arrives, so after the end of the turn it needs only 100 to 200 ms to finish the transcript.
 2. The LLM's answer streams out in chunks over a WebSocket as it's generated.
 3. As soon as the first sentence is complete, it goes to Kokoro. The agent starts talking while the rest of the answer is still being written.
 
@@ -108,7 +130,7 @@ If you take one thing from this post, make it the first item on this list:
 4. **Warm up your models at startup.** Your first caller deserves the same speed as your hundredth.
 5. **Stream everything,** and start speaking after the first sentence.
 6. **Make the first sentence short.** It's a prompt change, and it's free.
-7. **Respect the endpointing trade-off.** It may be your biggest chunk once everything else is fast.
+7. **Respect the endpointing trade-off.** It may be your biggest chunk once everything else is fast. And decide deliberately where end-of-turn detection runs: on the caller's device, or on your server.
 8. **Don't size the model alone.** Fit the whole pipeline on the GPU first, then pick the biggest model that still leaves room.
 
 ## Where this goes next
