@@ -7,6 +7,7 @@ import { remark } from 'remark';
 import rehypePrism from 'rehype-prism-plus';
 import rehypeStringify from 'rehype-stringify';
 import remarkRehype from 'remark-rehype';
+import remarkGfm from 'remark-gfm'; // tables, strikethrough, autolinks
 import rehypeSlug from 'rehype-slug'; // Used to assign IDs to headings
 import { visit } from 'unist-util-visit'; // Used for traversing the AST
 import { toString } from 'hast-util-to-string'; // Used to extract text from AST nodes
@@ -71,6 +72,7 @@ export async function getPostData(rawSlug: string): Promise<PostData> {
     const headings: Heading[] = []; // Array to store extracted headings
 
     const processedContent = await remark()
+      .use(remarkGfm)
       .use(remarkRehype)
       .use(rehypeSlug) // Adds 'id' attributes to headings
       .use(remarkCollectHeadings, headings) // Collects heading data
