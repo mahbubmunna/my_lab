@@ -1,57 +1,62 @@
 import Link from 'next/link';
-import ClientImage from '../ui/ClientImage';
-// Import the ClientImage component instead of the default Next.js Image
+import Image from 'next/image';
+import { ArrowUpRight } from 'lucide-react';
+import { CAL_URL } from '@/lib/site';
 
 export default function HeroSection() {
-  const avatarUrl = '/profile_picture.png';
-
   return (
-    <section className="container mx-auto px-4 py-16 md:py-24">
-      <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
-        {/* Text and CTA Column */}
-        <div className="order-2 space-y-6 lg:order-1">
-          <h1 className="text-foreground text-4xl leading-tight font-extrabold sm:text-5xl lg:text-6xl">
-            Hello, I&apos;m <span className="text-primary">Mahbub Hassan</span>{' '}
-            — AI, Full-Stack &amp; Mobile Engineer
-          </h1>
-
-          <p className="text-muted-foreground max-w-xl text-lg">
-            Engineer with 9+ years shipping production software — mobile apps,
-            backends, and full-stack platforms — focused for the last 2+ years
-            on generative AI: AI agents, RAG systems, and real-time voice
-            assistants running on self-hosted models. I take products from idea
-            to production across the entire stack.
+    <section className="mx-auto max-w-5xl px-4 pt-14 pb-10 md:pt-24 md:pb-16">
+      <div className="grid items-center gap-10 md:grid-cols-[1fr_auto] md:gap-14">
+        <div className="order-2 space-y-6 md:order-1">
+          <p className="text-muted-foreground text-sm font-medium tracking-wide">
+            AI engineer · Dhaka, working remotely
           </p>
 
-          {/* CTA Buttons (Styled like the design) */}
-          <div className="flex flex-col gap-4 pt-4 sm:flex-row">
-            <Link
-              href="/about"
-              className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-primary/30 inline-flex h-12 items-center justify-center rounded-lg px-8 py-3 text-lg font-medium shadow-lg transition-colors"
+          <h1 className="text-foreground text-4xl leading-[1.1] sm:text-5xl">
+            I build voice agents, and the products around them.
+          </h1>
+
+          <p className="text-muted-foreground max-w-xl text-lg leading-relaxed">
+            The model is rarely what breaks. It&apos;s the voice that talks
+            over you, the documents that can&apos;t leave the building, the app
+            nobody finished. That&apos;s the part I work on, from the backend
+            to the screen people actually touch.
+          </p>
+
+          <p className="text-muted-foreground max-w-xl text-base leading-relaxed">
+            Before AI, I spent 9+ years shipping 20+ mobile and web apps in
+            Flutter, Android, and React Native. One of them has over a million
+            downloads.
+          </p>
+
+          <div className="flex flex-col gap-3 pt-2 sm:flex-row">
+            <a
+              href={CAL_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-primary text-primary-foreground hover:bg-primary/90 inline-flex h-11 items-center justify-center gap-1.5 rounded-lg px-6 text-base font-medium transition-colors"
             >
-              View Resume
-            </Link>
+              Book a 30-min call
+              <ArrowUpRight className="h-4 w-4" />
+            </a>
             <Link
-              href="/about"
-              className="bg-secondary text-secondary-foreground hover:bg-secondary/80 border-border/50 inline-flex h-12 items-center justify-center rounded-lg border px-8 py-3 text-lg font-medium transition-colors"
+              href="/#work"
+              className="hover:bg-secondary border-border inline-flex h-11 items-center justify-center rounded-lg border px-6 text-base font-medium transition-colors"
             >
-              Get in Touch
+              See my work
             </Link>
           </div>
         </div>
 
-        {/* Image/Avatar Column */}
-        <div className="order-1 flex justify-center lg:order-2 lg:justify-end">
-          <div className="border-primary/20 relative h-64 w-64 overflow-hidden rounded-full border-4 shadow-2xl sm:h-80 sm:w-80">
-            {/* FIXED: Using ClientImage to safely contain the event handler */}
-            <ClientImage
-              src={avatarUrl}
-              alt="Portrait of Mahbub Hassan"
+        <div className="order-1 md:order-2">
+          <div className="border-border relative aspect-[4/5] w-40 overflow-hidden rounded-2xl border shadow-sm sm:w-48 md:w-64">
+            <Image
+              src="/mahbub-hassan.jpg"
+              alt="Mahbub Hassan"
               fill
-              className="object-cover"
               priority
-              sizes="(max-width: 768px) 100vw, 33vw"
-              // onError prop is handled by ClientImage internally
+              className="object-cover"
+              sizes="(max-width: 768px) 192px, 256px"
             />
           </div>
         </div>

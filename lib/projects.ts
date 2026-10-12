@@ -28,9 +28,9 @@ export const caseStudies: CaseStudy[] = [
     slug: 'mama-desk',
     title: 'Mama Desk',
     kicker: 'Voice AI · Multi-Agent · Healthcare',
-    status: 'In Development',
+    status: 'In development',
     oneLiner:
-      'An autonomous AI front-desk employee. Natural voice dialogues answering in about a second on fully local models, dynamic patient intake and symptom triage, live doctor-calendar scheduling, and schema-validated EHR extraction — debuting in healthcare with Hope Medical Clinic.',
+      'An autonomous AI front-desk employee. Natural voice dialogues answering in about a second on fully local models, dynamic patient intake and symptom triage, live doctor-calendar scheduling, and schema-validated EHR extraction. The first scenario is a clinic, Hope Medical Clinic.',
     tags: [
       'Python',
       'Whisper',
@@ -54,15 +54,15 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         title: 'Dynamic intake & symptom triage',
-        body: 'Conversational patient intake with live triage classification — urgent cases are flagged and routed to clinical staff while routine requests are handled end to end by the AI.',
+        body: 'Conversational patient intake with live triage classification. Urgent cases are flagged and routed to clinical staff while routine requests are handled end to end by the AI.',
       },
       {
         title: 'Live calendar scheduling',
-        body: 'A scheduler agent executes real doctor-calendar bookings mid-conversation — availability checks, confirmations, and rescheduling without a human in the loop.',
+        body: 'A scheduler agent executes real doctor-calendar bookings mid-conversation: availability checks, confirmations, and rescheduling, with no human in the loop.',
       },
       {
         title: 'Automatic EHR extraction',
-        body: 'Every call is distilled into a schema-validated medical record — chief complaint, vitals mentioned, history — ready to push to Epic / Cerner as FHIR R4.',
+        body: 'Every call becomes a schema-validated medical record (chief complaint, vitals mentioned, history) in FHIR R4 format.',
       },
     ],
     rows: [
@@ -75,7 +75,7 @@ export const caseStudies: CaseStudy[] = [
             alt: 'Mama Desk operations center dashboard',
             label: 'mama-desk / operations center',
             caption:
-              'Operations Center — live agent coordination matrix, triage monitor, and real-time intake stream across all four agents.',
+              'Operations Center: live agent coordination matrix, triage monitor, and real-time intake stream across all four agents.',
             width: 1600,
             height: 1280,
           },
@@ -89,7 +89,7 @@ export const caseStudies: CaseStudy[] = [
             alt: 'Live AI front-desk voice call',
             label: 'live AI voice call',
             caption:
-              'Live call — the AI receptionist mid-conversation, with intake context extracted in real time.',
+              'Live call: the AI receptionist mid-conversation, with intake context extracted in real time.',
             width: 1280,
             height: 1024,
           },
@@ -98,7 +98,7 @@ export const caseStudies: CaseStudy[] = [
             alt: 'Structured EHR intake records',
             label: 'structured EHR intake',
             caption:
-              'Structured intake records — AI triage classification with confidence, extracted vitals, and a FHIR R4 payload preview.',
+              'Structured intake records: AI triage classification with confidence, extracted vitals, and a FHIR R4 payload preview.',
             width: 1600,
             height: 1280,
           },
@@ -112,7 +112,7 @@ export const caseStudies: CaseStudy[] = [
             alt: 'Calendar allocation hub with AI-booked appointments',
             label: 'calendar allocation hub',
             caption:
-              'Calendar Allocation Hub — AI-booked, emergency, and walk-in slots managed across doctors and departments.',
+              'Calendar Allocation Hub: AI-booked, emergency, and walk-in slots managed across doctors and departments.',
             width: 1600,
             height: 1000,
           },
@@ -127,7 +127,7 @@ export const caseStudies: CaseStudy[] = [
             alt: 'Hope Medical Clinic patient portal',
             label: 'hope medical clinic',
             caption:
-              'Patient portal — the “Talk to Front Desk” voice entry point embedded in the clinic site.',
+              'Patient portal: the “Talk to Front Desk” voice entry point embedded in the clinic site.',
             width: 1280,
             height: 853,
           },
@@ -136,7 +136,7 @@ export const caseStudies: CaseStudy[] = [
             alt: 'Appointment confirmation page',
             label: 'appointment confirmation',
             caption:
-              'Appointment confirmation — the booking the AI scheduled, confirmed back to the patient.',
+              'Appointment confirmation: the booking the AI scheduled, confirmed back to the patient.',
             width: 1280,
             height: 701,
           },
@@ -144,15 +144,15 @@ export const caseStudies: CaseStudy[] = [
       },
     ],
     originNote:
-      'Evolved from my local-first voice RAG assistant: streaming Whisper STT, a retrieval-grounded Llama 3.1 brain, and sentence-streamed Kokoro TTS running on a single consumer GPU — no cloud AI APIs.',
+      'Evolved from my local-first voice RAG assistant: streaming Whisper STT, a retrieval-grounded Llama 3.1 brain, and sentence-streamed Kokoro TTS running on a single consumer GPU, with no cloud AI APIs.',
   },
   {
     slug: 'causelist-pro',
     title: 'CauseList Pro',
     kicker: 'Legal Tech · Mobile + Admin · Bangladesh',
-    status: 'In Development',
+    status: 'In development',
     oneLiner:
-      'Real-time court case tracking for Bangladeshi legal advocates. Automated daily Supreme Court and High Court cause-list scraping, instant push notifications, a bilingual mobile app with an AI legal assistant — and a full admin portal behind it. Built end to end solo.',
+      'Real-time court case tracking for Bangladeshi legal advocates. Automated daily Supreme Court and High Court cause-list scraping, instant push notifications, a bilingual mobile app with an AI legal assistant, and a full admin portal behind it. Built end to end solo.',
     tags: ['Flutter', 'Riverpod', 'FastAPI', 'BeautifulSoup4', 'Firebase'],
     github: 'https://github.com/mahbubmunna',
     capabilities: [
@@ -162,11 +162,11 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         title: 'Instant hearing alerts',
-        body: 'Advocates track their cases and get Firebase push notifications the moment a tracked case appears on a cause list — no more manual daily checking.',
+        body: 'Advocates track their cases and get Firebase push notifications the moment a tracked case appears on a cause list. No more checking by hand every day.',
       },
       {
         title: 'AI legal assistant',
-        body: 'An in-app AI law finder answers questions on Bangladeshi law with section-level citations — anticipatory bail, writ petitions, CrPC provisions — in Bangla and English.',
+        body: 'An in-app AI law finder answers questions on Bangladeshi law with section-level citations, in Bangla and English: anticipatory bail, writ petitions, CrPC provisions.',
       },
       {
         title: 'Full admin portal',
@@ -182,7 +182,7 @@ export const caseStudies: CaseStudy[] = [
             src: '/projects/causelist-live-board.png',
             alt: 'Live cause-list board',
             caption:
-              'Live cause-list board — today’s hearings by division, court, and judge.',
+              'Live cause-list board: today’s hearings by division, court, and judge.',
             width: 390,
             height: 729,
           },
@@ -190,7 +190,7 @@ export const caseStudies: CaseStudy[] = [
             src: '/projects/causelist-ai-law-finder.png',
             alt: 'AI law finder chat',
             caption:
-              'AI law finder — cited answers on statutes and procedure.',
+              'AI law finder: cited answers on statutes and procedure.',
             width: 706,
             height: 1600,
           },
@@ -198,7 +198,7 @@ export const caseStudies: CaseStudy[] = [
             src: '/projects/causelist-tracked-cases.png',
             alt: 'My tracked cases screen',
             caption:
-              'Tracked cases — bookmarked matters with hearing status at a glance.',
+              'Tracked cases: bookmarked matters with hearing status at a glance.',
             width: 390,
             height: 783,
           },
@@ -206,7 +206,7 @@ export const caseStudies: CaseStudy[] = [
             src: '/projects/causelist-settings.png',
             alt: 'Settings and subscription screen',
             caption:
-              'Settings — bilingual interface and Pro subscription management.',
+              'Settings: bilingual interface and Pro subscription management.',
             width: 390,
             height: 1677,
           },
@@ -221,7 +221,7 @@ export const caseStudies: CaseStudy[] = [
             alt: 'Master cause list explorer',
             label: 'causelist-pro / admin portal',
             caption:
-              'Master cause-list explorer — real-time aggregation across divisions with per-case dockets, trajectories, and CSV export.',
+              'Master cause-list explorer: real-time aggregation across divisions with per-case dockets, trajectories, and CSV export.',
             width: 1600,
             height: 1280,
           },
@@ -235,7 +235,7 @@ export const caseStudies: CaseStudy[] = [
             alt: 'Scraper operations and system health dashboard',
             label: 'scraper operations',
             caption:
-              'Operations dashboard — scraper runs, division-by-division sync progress, and system health.',
+              'Operations dashboard: scraper runs, division-by-division sync progress, and system health.',
             width: 1600,
             height: 1280,
           },
@@ -244,7 +244,7 @@ export const caseStudies: CaseStudy[] = [
             alt: 'Payment approval center',
             label: 'payment approvals',
             caption:
-              'Payment approval center — subscription payments reviewed and approved by admins.',
+              'Payment approval center: subscription payments reviewed and approved by admins.',
             width: 1600,
             height: 1280,
           },
@@ -258,7 +258,7 @@ export const caseStudies: CaseStudy[] = [
             alt: 'Broadcast hub',
             label: 'broadcast hub',
             caption:
-              'Broadcast hub — push announcements to all advocates or targeted segments.',
+              'Broadcast hub: push announcements to all advocates or targeted segments.',
             width: 1600,
             height: 1280,
           },
@@ -267,7 +267,7 @@ export const caseStudies: CaseStudy[] = [
             alt: 'AI knowledge management',
             label: 'AI knowledge management',
             caption:
-              'AI knowledge management — curating the laws-and-acts corpus behind the AI law finder.',
+              'AI knowledge management: curating the laws-and-acts corpus behind the AI law finder.',
             width: 1600,
             height: 1458,
           },

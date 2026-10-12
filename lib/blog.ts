@@ -14,9 +14,6 @@ import { toString } from 'hast-util-to-string'; // Used to extract text from AST
 // Get the base directory path. process.cwd() is generally the project root.
 const postsDirectory = path.join(process.cwd(), 'lib/posts');
 
-// Add a diagnostic log to confirm the FINAL path is being sought
-console.log('Post Directory Check:', postsDirectory);
-
 // New: Interface for extracted heading data
 export interface Heading {
   level: number;
@@ -30,6 +27,9 @@ export interface PostData {
   date: string;
   summary: string;
   tags: string[];
+  draft?: boolean; // hidden from lists, RSS and static paths
+  canonical?: string; // set only if the original lives elsewhere
+  readingMinutes?: number;
   contentHtml?: string;
   headings?: Heading[]; // NEW: Field to store ToC data
 }
@@ -60,7 +60,6 @@ function remarkCollectHeadings(headings: Heading[]) {
  * Gets the full data (frontmatter + HTML content + Headings) for a single post by slug.
  */
 export async function getPostData(rawSlug: string): Promise<PostData> {
-  console.log('we are at the getPostData');
   const slug = rawSlug.replace(/\.md$/, '');
 
   const fullPath = path.join(postsDirectory, `${slug}.md`);
@@ -81,12 +80,13 @@ export async function getPostData(rawSlug: string): Promise<PostData> {
 
     const contentHtml = processedContent.toString();
 
-    console.log('now returing from post data');
-
     // Combine data
+    const words = matterResult.content.split(/\s+/).filter(Boolean).length;
+
     return {
       slug,
       contentHtml,
+      readingMinutes: Math.max(1, Math.round(words / 230)),
       headings, // Include extracted headings in the return
       ...(matterResult.data as Omit<
         PostData,
@@ -104,10 +104,7 @@ export async function getPostData(rawSlug: string): Promise<PostData> {
 
 // ... (getAllPostSlugs and getSortedPostsData remain unchanged)
 export function getAllPostSlugs(): { slug: string }[] {
-  const fileNames = fs.readdirSync(postsDirectory);
-  return fileNames.map((fileName) => ({
-    slug: fileName.replace(/\.md$/, ''),
-  }));
+  return getSortedPostsData().map(({ slug }) => ({ slug }));
 }
 
 export function getSortedPostsData(): PostData[] {
@@ -122,7 +119,9 @@ export function getSortedPostsData(): PostData[] {
       ...(matterResult.data as Omit<PostData, 'slug'>),
     } as PostData;
   });
-  return allPostsData.sort((a, b) =>
+  return allPostsData
+    .filter((post) => !post.draft)
+    .sort((a, b) =>
     new Date(a.date) < new Date(b.date) ? 1 : -1,
   );
 }

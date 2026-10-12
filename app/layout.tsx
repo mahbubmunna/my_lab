@@ -1,26 +1,58 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { IBM_Plex_Sans, IBM_Plex_Mono, Source_Serif_4 } from 'next/font/google';
 import '../styles/globals.css';
 import { ThemeProvider } from './components/layout/ThemeProvider';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
+import { SITE_URL } from '@/lib/site';
 
-const inter = Inter({ subsets: ['latin'] });
+const sans = IBM_Plex_Sans({
+  subsets: ['latin'],
+  weight: ['400', '500', '600'],
+  variable: '--font-sans',
+});
+const serif = Source_Serif_4({
+  subsets: ['latin'],
+  weight: ['400', '600'],
+  style: ['normal', 'italic'],
+  variable: '--font-serif',
+});
+const mono = IBM_Plex_Mono({
+  subsets: ['latin'],
+  weight: ['400'],
+  variable: '--font-mono',
+});
 
 export const metadata: Metadata = {
-  title: 'Mahbub Hassan | Digital Showcase & Portfolio',
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: 'Mahbub Hassan | I build voice agents and the products around them',
+    template: '%s | Mahbub Hassan',
+  },
   description:
-    'Full-stack developer portfolio, blog, and lab for advanced Next.js projects.',
-  keywords: ['Next.js', 'React', 'Full-stack', 'Portfolio', 'Mahbub Hassan'],
+    'AI engineer building voice agents, private RAG, and the web and mobile apps around them. Case studies and long-form notes on what broke in production and how I fixed it.',
+  keywords: [
+    'Mahbub Hassan',
+    'AI engineer',
+    'voice agents',
+    'voice AI',
+    'RAG',
+    'self-hosted LLM',
+    'Flutter',
+    'React Native',
+  ],
+  alternates: {
+    types: { 'application/rss+xml': `${SITE_URL}/rss.xml` },
+  },
   openGraph: {
-    title: "Mahbub Hassan's Portfolio",
-    description: 'The official digital showcase.',
-    url: 'https://yourwebsite.com',
-    siteName: 'Mahbub Hassan | Portfolio',
+    title: 'Mahbub Hassan',
+    description: 'I build voice agents and the products around them.',
+    url: SITE_URL,
+    siteName: 'Mahbub Hassan',
+    images: [{ url: '/mahbub-hassan-square.jpg', width: 512, height: 512 }],
     locale: 'en_US',
     type: 'website',
   },
-  // Add other tags like twitter, icons, etc.
 };
 
 export default function RootLayout({
@@ -29,16 +61,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={inter.className}>
-        {/* ThemeProvider must wrap the entire body to enable dark mode switching
-          via the 'class' attribute.
-        */}
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={`${sans.variable} ${serif.variable} ${mono.variable}`}
+    >
+      <body>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Navbar />
-          {/* The main content area. min-h-[calc(100vh-10rem)] is used to ensure
-            the footer stays at the bottom on short pages.
-          */}
           <main className="min-h-[calc(100vh-10rem)]">{children}</main>
           <Footer />
         </ThemeProvider>

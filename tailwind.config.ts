@@ -33,7 +33,15 @@ const config: Config = {
     extend: {
       // **CRITICAL MAPPING:** Connects your CSS variables to Tailwind utility classes
 
+      fontFamily: {
+        sans: ['var(--font-sans)', 'system-ui', 'sans-serif'],
+        serif: ['var(--font-serif)', 'Georgia', 'serif'],
+        mono: ['var(--font-mono)', 'ui-monospace', 'monospace'],
+      },
+
       colors: {
+        brand: 'hsl(var(--brand))',
+
         border: 'hsl(var(--border))',
 
         input: 'hsl(var(--input))',

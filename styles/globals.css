@@ -1,159 +1,152 @@
-/*
-
-|--------------------------------------------------------------------------
-
-| 1. Tailwind V4 Unified Import
-
-|--------------------------------------------------------------------------
-
-| This single import includes all base styles (Preflight), components, and utilities.
-
-*/
-
+/* 1. Tailwind v4 */
 @import 'tailwindcss';
-
 @config '../tailwind.config.ts';
 
-/*
-
-|--------------------------------------------------------------------------
-
-| 2. Define Custom CSS Variables for Theming (HSL Values)
-
-|--------------------------------------------------------------------------
-
-| These variables are read by the 'hsl(var(--...))' definitions in your
-
-| tailwind.config.ts.
-
-*/
-
+/* 2. Theme tokens (HSL values, read by tailwind.config.ts) */
 @layer base {
   :root {
-    /* -- LIGHT MODE VARIABLES -- */
-
-    --background: 0 0% 100%; /* white */
-
-    --foreground: 222.2 47.4% 11.2%; /* near black */
-
-    --muted: 210 40% 96.1%;
-
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --card: 0 0% 100%;
-
-    --card-foreground: 222.2 47.4% 11.2%;
-
-    --border: 214.3 31.8% 91.4%; /* light gray border */
-
-    --input: 214.3 31.8% 91.4%;
-
-    /* Primary (Used for CTA buttons, accents - currently near black/dark blue) */
-
-    --primary: 222.2 47.4% 11.2%;
-
-    --primary-foreground: 210 40% 98%; /* text on primary: white */
-
-    --secondary: 210 40% 96.1%;
-
-    --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --accent: 210 40% 96.1%;
-
-    --accent-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 84.2% 60.2%;
-
-    --destructive-foreground: 210 40% 98%;
-
-    --ring: 222.2 47.4% 11.2%;
-
-    --radius: 0.5rem; /* Border radius default */
+    /* Warm paper and ink, one terracotta accent */
+    --background: 40 33% 98%;
+    --foreground: 24 12% 11%;
+    --muted: 38 22% 94%;
+    --muted-foreground: 25 7% 38%;
+    --card: 40 33% 99%;
+    --card-foreground: 24 12% 11%;
+    --border: 35 16% 87%;
+    --input: 35 16% 87%;
+    --primary: 24 12% 13%;
+    --primary-foreground: 40 33% 98%;
+    --secondary: 38 22% 93%;
+    --secondary-foreground: 24 12% 13%;
+    --accent: 38 22% 93%;
+    --accent-foreground: 24 12% 13%;
+    --brand: 15 62% 42%;
+    --destructive: 0 72% 50%;
+    --destructive-foreground: 40 33% 98%;
+    --ring: 15 62% 42%;
+    --radius: 0.6rem;
   }
 
-  /*
-
-   * Dark mode is activated when 'next-themes' adds the 'dark' class
-
-   * to the <html> element.
-
-   */
-
   .dark {
-    /* -- DARK MODE VARIABLES -- */
-
-    --background: 222.2 47.4% 11.2%; /* dark navy/near black */
-
-    --foreground: 210 40% 98%; /* near white */
-
-    --muted: 217.2 32.6% 17.5%;
-
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --card: 222.2 47.4% 11.2%;
-
-    --card-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%; /* darker gray border */
-
-    --input: 217.2 32.6% 17.5%;
-
-    /* Primary (Used for CTA buttons - currently near white/light gray) */
-
-    --primary: 210 40% 98%;
-
-    --primary-foreground: 222.2 47.4% 11.2%; /* text on primary: dark navy */
-
-    --secondary: 217.2 32.6% 17.5%;
-
-    --secondary-foreground: 210 40% 98%;
-
-    --accent: 217.2 32.6% 17.5%;
-
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-
-    --destructive-foreground: 210 40% 98%;
-
-    --ring: 217.2 32.6% 17.5%;
+    --background: 24 9% 8%;
+    --foreground: 40 22% 92%;
+    --muted: 24 7% 14%;
+    --muted-foreground: 32 8% 66%;
+    --card: 24 8% 10%;
+    --card-foreground: 40 22% 92%;
+    --border: 24 6% 20%;
+    --input: 24 6% 20%;
+    --primary: 40 22% 92%;
+    --primary-foreground: 24 9% 8%;
+    --secondary: 24 7% 15%;
+    --secondary-foreground: 40 22% 92%;
+    --accent: 24 7% 15%;
+    --accent-foreground: 40 22% 92%;
+    --brand: 18 72% 64%;
+    --destructive: 0 62% 45%;
+    --destructive-foreground: 40 22% 92%;
+    --ring: 18 72% 64%;
   }
 }
 
-/*
-
-|--------------------------------------------------------------------------
-
-| 3. Apply Global Base Styles (Using @apply)
-
-|--------------------------------------------------------------------------
-
-| This applies the primary theme variables to the body and ensures borders
-
-| use the theme color.
-
-*/
-
+/* 3. Base styles */
 @layer base {
   * {
     @apply border-border;
   }
 
-  body {
-    /* These apply the theme variables defined in :root or .dark */
-
-    @apply bg-background text-foreground;
-
-    font-family: Arial, Helvetica, sans-serif;
+  html {
+    scroll-behavior: smooth;
   }
 
-  /* Example: Headings reset (for better control after Preflight) */
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-sans), system-ui, sans-serif;
+  }
 
   h1,
   h2,
   h3,
   h4 {
-    @apply mt-0 mb-2 font-bold;
+    @apply mt-0 mb-2;
+    font-family: var(--font-serif), Georgia, serif;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  code,
+  pre {
+    font-family: var(--font-mono), ui-monospace, monospace;
+  }
+}
+
+/* Long-form articles: a readable measure, serif body, generous spacing */
+@layer components {
+  .article {
+    font-family: var(--font-serif), Georgia, serif;
+    font-size: 1.15rem;
+    line-height: 1.75;
+    color: hsl(var(--foreground) / 0.9);
+  }
+  .article > * + * {
+    margin-top: 1.25em;
+  }
+  .article h2 {
+    font-size: 1.6rem;
+    line-height: 1.3;
+    margin-top: 2.2em;
+    color: hsl(var(--foreground));
+  }
+  .article h3 {
+    font-size: 1.25rem;
+    margin-top: 1.8em;
+    color: hsl(var(--foreground));
+  }
+  .article a {
+    color: hsl(var(--brand));
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .article ul,
+  .article ol {
+    padding-left: 1.4em;
+  }
+  .article ul {
+    list-style: disc;
+  }
+  .article ol {
+    list-style: decimal;
+  }
+  .article li + li {
+    margin-top: 0.4em;
+  }
+  .article blockquote {
+    border-left: 3px solid hsl(var(--brand));
+    padding-left: 1em;
+    font-style: italic;
+    color: hsl(var(--muted-foreground));
+  }
+  .article img {
+    border-radius: var(--radius);
+    border: 1px solid hsl(var(--border));
+  }
+  .article :not(pre) > code {
+    font-size: 0.85em;
+    background: hsl(var(--muted));
+    padding: 0.15em 0.35em;
+    border-radius: 4px;
+  }
+  .article table {
+    width: 100%;
+    font-family: var(--font-sans), system-ui, sans-serif;
+    font-size: 0.95rem;
+    border-collapse: collapse;
+  }
+  .article th,
+  .article td {
+    border-bottom: 1px solid hsl(var(--border));
+    padding: 0.5em 0.6em;
+    text-align: left;
   }
 }
 

@@ -3,6 +3,7 @@ title: "Next.js & Server Actions: A First Look"
 date: "2025-10-25"
 summary: "Exploring the power of Server Actions for full-stack data mutations without separate API routes."
 tags: ["Next.js", "Server Actions", "TypeScript"]
+draft: true
 ---
 ## What are Server Actions?
 

@@ -1,114 +1,106 @@
-// app/blog/[slug]/page.tsx
-
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
-import { getPostData, getAllPostSlugs, PostData } from '@/lib/blog';
-import { format } from 'date-fns';
 import Link from 'next/link';
-import TableOfContents from '../../components/blog/TableOfContents'; // NEW: Import the ToC component
+import { format, parseISO } from 'date-fns';
+import { ArrowUpRight } from 'lucide-react';
+import { getPostData, getAllPostSlugs } from '@/lib/blog';
+import { CAL_URL } from '@/lib/site';
+import TableOfContents from '../../components/blog/TableOfContents';
 
-// --- TYPE DEFINITIONS ---
 interface PostPageProps {
-  params: Promise<{
-    slug: string;
-  }>;
+  params: Promise<{ slug: string }>;
 }
 
-// --- SSG FUNCTIONS (Unchanged) ---
 export function generateStaticParams() {
-  const slugs = getAllPostSlugs();
-
-  console.log(slugs);
-  return slugs.map(({ slug }) => ({
-    slug,
-  }));
+  return getAllPostSlugs();
 }
 
 export async function generateMetadata({
   params,
 }: PostPageProps): Promise<Metadata> {
   const { slug } = await params;
-  const postData = await getPostData(slug).catch(() => null);
-  if (!postData) {
-    return {};
-  }
+  const post = await getPostData(slug).catch(() => null);
+  if (!post) return {};
   return {
-    title: postData.title,
-    description: postData.summary,
-    openGraph: { title: postData.title, description: postData.summary },
-    keywords: postData.tags.join(', '),
+    title: post.title,
+    description: post.summary,
+    keywords: post.tags,
+    // The site is the original; cross-posts (dev.to, Substack) point back here.
+    alternates: { canonical: post.canonical ?? `/blog/${slug}` },
+    openGraph: {
+      title: post.title,
+      description: post.summary,
+      type: 'article',
+      publishedTime: post.date,
+    },
   };
 }
 
-/**
- * The main component for displaying an individual blog post (Server Component).
- */
 export default async function PostPage({ params }: PostPageProps) {
   const { slug } = await params;
-  params;
+  const post = await getPostData(slug).catch(() => null);
+  if (!post) notFound();
 
-  // Fetch the full post data, including the HTML content AND headings
-  const postData: PostData | null = await getPostData(slug).catch(() => null);
+  const { title, date, summary, tags, contentHtml, headings, readingMinutes } = post;
+  const showToc = (headings?.length ?? 0) >= 3;
 
-  console.log(postData);
-
-  if (!postData) {
-    notFound();
-  }
-
-  const { title, date, summary, tags, contentHtml, headings } = postData;
-
-  // Render the component
   return (
-    <div className="container mx-auto max-w-6xl px-4 py-12">
-      <div className="grid grid-cols-1 lg:grid-cols-4 lg:gap-12">
-        {/* Left Column (Main Content) */}
-        <article className="lg:col-span-3">
-          {/* Header */}
-          <header className="border-border/50 mb-8 border-b pb-4">
+    <div className="mx-auto max-w-5xl px-4 py-12 md:py-16">
+      <div className="grid grid-cols-1 gap-12 lg:grid-cols-[minmax(0,1fr)_220px]">
+        <article className="mx-auto w-full max-w-[68ch]">
+          <header className="mb-10">
             <Link
               href="/blog"
-              className="text-primary/70 hover:text-primary mb-1 inline-block text-sm font-medium transition-colors"
+              className="text-muted-foreground hover:text-foreground text-sm"
             >
-              ← Back to Blog Index
+              ← All writing
             </Link>
-            <h1 className="text-foreground mb-3 text-4xl leading-tight font-extrabold tracking-tight md:text-5xl">
+            <h1 className="text-foreground mt-4 text-4xl leading-tight md:text-5xl">
               {title}
             </h1>
-            <div className="text-muted-foreground flex flex-wrap items-center space-x-4 text-sm">
-              <time dateTime={date} className="font-semibold">
-                {format(new Date(date), 'MMMM dd, yyyy')}
-              </time>
-              <span className="text-primary/50">/</span>
-              <span>{tags.join(', ')}</span>
-            </div>
+            <p className="text-muted-foreground mt-4 text-lg">{summary}</p>
+            <p className="text-muted-foreground/80 mt-4 text-sm">
+              <time dateTime={date}>{format(parseISO(date), 'd MMMM yyyy')}</time>
+              {readingMinutes ? ` · ${readingMinutes} min read` : ''}
+              {tags?.length ? ` · ${tags.join(', ')}` : ''}
+            </p>
           </header>
 
-          {/* Post Summary */}
-          <p className="text-foreground/80 border-primary/50 mb-8 border-l-4 pl-4 text-xl italic">
-            {summary}
-          </p>
-
-          {/* Content Body */}
           <div
-            className="prose dark:prose-invert text-muted-foreground max-w-none"
-            dangerouslySetInnerHTML={{
-              __html: contentHtml || '<p>No content available yet.</p>',
-            }}
+            className="article"
+            dangerouslySetInnerHTML={{ __html: contentHtml ?? '' }}
           />
+
+          <aside className="bg-muted mt-16 rounded-xl p-6">
+            <p className="text-foreground font-serif text-xl">
+              Dealing with something similar?
+            </p>
+            <p className="text-muted-foreground mt-2">
+              I&apos;m happy to talk it through. Thirty minutes, bring the
+              problem.
+            </p>
+            <a
+              href={CAL_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-primary text-primary-foreground hover:bg-primary/90 mt-4 inline-flex h-10 items-center gap-1.5 rounded-lg px-5 text-sm font-medium transition-colors"
+            >
+              Book a 30-min call
+              <ArrowUpRight className="h-4 w-4" />
+            </a>
+          </aside>
         </article>
 
-        {/* Right Column (Table of Contents) */}
-        <aside className="mt-12 lg:col-span-1 lg:mt-0">
-          {/* Ensure the sidebar stays sticky and doesn't scroll off screen */}
-          <div className="border-border/50 bg-card toc-sidebar sticky top-20 rounded-xl border p-4">
-            <h2 className="text-foreground mb-3 text-lg font-bold">
-              Table of Contents
-            </h2>
-            <TableOfContents headings={headings || []} />{' '}
-            {/* NEW: Render the component */}
-          </div>
-        </aside>
+        {showToc && (
+          <aside className="hidden lg:block">
+            <div className="sticky top-20">
+              <p className="text-muted-foreground mb-3 text-xs font-medium tracking-wide uppercase">
+                On this page
+              </p>
+              <TableOfContents headings={headings ?? []} />
+            </div>
+          </aside>
+        )}
       </div>
     </div>
   );

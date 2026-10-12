@@ -1,15 +1,14 @@
-// components/ui/ProjectCard.tsx (Updated)
-
 import Link from 'next/link';
-import React from 'react';
+import { ArrowUpRight } from 'lucide-react';
 
-interface ProjectCardProps {
+export interface ProjectCardProps {
   slug: string;
-  href: string; // This can be '/notes' or 'https://external.app'
+  href: string; // internal route ('/projects/mama-desk') or external URL
   title: string;
   description: string;
   tags: string[];
-  status?: string; // e.g. 'Live in Production', 'In Development'
+  status?: string; // e.g. 'Built and deployed', 'In development'
+  ctaLabel?: string;
 }
 
 export default function ProjectCard({
@@ -18,84 +17,36 @@ export default function ProjectCard({
   description,
   tags,
   status,
+  ctaLabel = 'Read the case study',
 }: ProjectCardProps) {
-  // Determine if the link is external
   const isExternal = href.startsWith('http');
-
-  const isLive = status?.toLowerCase().includes('live');
-
-  // Define the common styling for the View Demo button
-  const buttonClasses =
-    'bg-primary text-primary-foreground hover:bg-primary/90 inline-flex h-10 items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors';
-
-  // Define the View Demo Element (Link or Anchor tag)
-  const ViewDemoElement = isExternal ? (
-    <a
-      href={href}
-      target="_blank" // Open external link in a new tab
-      rel="noopener noreferrer"
-      className={buttonClasses}
-    >
-      View Demo
-    </a>
-  ) : (
-    <Link
-      href={`/${href}`} // Use internal Link component for app routes
-      className={buttonClasses}
-    >
-      View Demo
-    </Link>
-  );
+  const linkClasses =
+    'text-brand inline-flex items-center gap-1 text-sm font-medium underline-offset-4 hover:underline';
 
   return (
-    <div className="border-border/50 bg-card hover:border-primary/50 rounded-xl border p-6 shadow-xl transition-all duration-300 hover:shadow-2xl">
-      <div className="mb-2 flex flex-wrap items-center gap-3">
-        <h3 className="text-foreground text-xl font-semibold">{title}</h3>
+    <article className="border-border bg-card rounded-xl border p-6 transition-colors hover:border-foreground/25">
+      <div className="mb-2 flex flex-wrap items-baseline gap-x-3 gap-y-1">
+        <h3 className="text-foreground text-xl">{title}</h3>
         {status && (
-          <span
-            className={`inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 text-xs font-medium ${
-              isLive
-                ? 'border-emerald-500/30 bg-emerald-500/10 text-emerald-500'
-                : 'border-amber-500/30 bg-amber-500/10 text-amber-500'
-            }`}
-          >
-            <span
-              className={`h-1.5 w-1.5 rounded-full ${
-                isLive ? 'bg-emerald-500' : 'bg-amber-500'
-              }`}
-            />
+          <span className="text-muted-foreground text-xs font-medium tracking-wide uppercase">
             {status}
           </span>
         )}
       </div>
-      <p className="text-muted-foreground mb-4 text-sm">{description}</p>
-
-      {/* Tags Section (Unchanged) */}
-      <div className="mb-6 flex flex-wrap gap-2">
-        {tags.map((tag) => (
-          <span
-            key={tag}
-            className="text-secondary-foreground bg-secondary/50 border-secondary/70 rounded-full border px-3 py-1 text-xs font-medium"
-          >
-            {tag}
-          </span>
-        ))}
-      </div>
-
-      {/* Action Buttons */}
-      <div className="flex gap-4">
-        {/* The dynamic View Demo element */}
-        {ViewDemoElement}
-
-        <a
-          href="https://github.com/mahbubmunna" // Updated GitHub link for consistency
-          target="_blank"
-          rel="noopener noreferrer"
-          className="bg-secondary text-secondary-foreground hover:bg-secondary/80 border-border/50 inline-flex h-10 items-center justify-center rounded-md border px-4 py-2 text-sm font-medium transition-colors"
-        >
-          See on GitHub
+      <p className="text-muted-foreground mb-4 leading-relaxed">{description}</p>
+      <p className="text-muted-foreground/80 mb-4 font-mono text-xs">
+        {tags.join(' · ')}
+      </p>
+      {isExternal ? (
+        <a href={href} target="_blank" rel="noopener noreferrer" className={linkClasses}>
+          {ctaLabel}
+          <ArrowUpRight className="h-3.5 w-3.5" />
         </a>
-      </div>
-    </div>
+      ) : (
+        <Link href={href} className={linkClasses}>
+          {ctaLabel} →
+        </Link>
+      )}
+    </article>
   );
 }
