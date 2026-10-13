@@ -11,6 +11,10 @@ interface PostPageProps {
   params: Promise<{ slug: string }>;
 }
 
+// Drafts are readable in local dev (for review) but 404 in production.
+const isHiddenDraft = (post: { draft?: boolean }) =>
+  Boolean(post.draft) && process.env.NODE_ENV === 'production';
+
 export function generateStaticParams() {
   return getAllPostSlugs();
 }
@@ -20,7 +24,7 @@ export async function generateMetadata({
 }: PostPageProps): Promise<Metadata> {
   const { slug } = await params;
   const post = await getPostData(slug).catch(() => null);
-  if (!post) return {};
+  if (!post || isHiddenDraft(post)) return {};
   return {
     title: post.title,
     description: post.summary,
@@ -39,7 +43,7 @@ export async function generateMetadata({
 export default async function PostPage({ params }: PostPageProps) {
   const { slug } = await params;
   const post = await getPostData(slug).catch(() => null);
-  if (!post) notFound();
+  if (!post || isHiddenDraft(post)) notFound();
 
   const { title, date, summary, tags, contentHtml, headings, readingMinutes } = post;
   const showToc = (headings?.length ?? 0) >= 3;
