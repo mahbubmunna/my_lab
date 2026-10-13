@@ -1,10 +1,10 @@
 import Link from 'next/link';
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import HeroSection from './components/home/HeroSection';
 import FeaturedProjects from './components/home/FeaturedProjects';
 import type { ProjectCardProps } from './components/ui/ProjectCard';
 import { getSortedPostsData } from '@/lib/blog';
-import { CAL_URL } from '@/lib/site';
+import { BOOK_PATH } from '@/lib/site';
 
 const projects: ProjectCardProps[] = [
   {
@@ -108,15 +108,13 @@ export default function HomePage() {
             I&apos;m happy to talk it through. Thirty minutes, bring the problem,
             no deck needed.
           </p>
-          <a
-            href={CAL_URL}
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            href={BOOK_PATH}
             className="bg-primary text-primary-foreground hover:bg-primary/90 mt-6 inline-flex h-11 items-center gap-1.5 rounded-lg px-6 font-medium transition-colors"
           >
             Book a 30-min call
-            <ArrowUpRight className="h-4 w-4" />
-          </a>
+            <ArrowRight className="h-4 w-4" />
+          </Link>
         </div>
       </section>
     </div>

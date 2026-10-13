@@ -2,9 +2,9 @@ import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { format, parseISO } from 'date-fns';
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { getPostData, getAllPostSlugs } from '@/lib/blog';
-import { CAL_URL } from '@/lib/site';
+import { BOOK_PATH } from '@/lib/site';
 import TableOfContents from '../../components/blog/TableOfContents';
 
 interface PostPageProps {
@@ -79,15 +79,13 @@ export default async function PostPage({ params }: PostPageProps) {
               I&apos;m happy to talk it through. Thirty minutes, bring the
               problem.
             </p>
-            <a
-              href={CAL_URL}
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href={BOOK_PATH}
               className="bg-primary text-primary-foreground hover:bg-primary/90 mt-4 inline-flex h-10 items-center gap-1.5 rounded-lg px-5 text-sm font-medium transition-colors"
             >
               Book a 30-min call
-              <ArrowUpRight className="h-4 w-4" />
-            </a>
+              <ArrowRight className="h-4 w-4" />
+            </Link>
           </aside>
         </article>
 

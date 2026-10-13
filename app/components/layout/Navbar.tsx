@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import ThemeToggle from '../ui/ThemeToggle';
-import { CAL_URL } from '@/lib/site';
+import { BOOK_PATH } from '@/lib/site';
 
 const navLinks = [
   { name: 'Work', href: '/#work' },
@@ -25,14 +25,12 @@ export default function Navbar() {
               {link.name}
             </Link>
           ))}
-          <a
-            href={CAL_URL}
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            href={BOOK_PATH}
             className="bg-primary text-primary-foreground hover:bg-primary/90 hidden h-8 items-center rounded-md px-3 text-sm font-medium transition-colors sm:inline-flex"
           >
             Book a call
-          </a>
+          </Link>
           <ThemeToggle />
         </nav>
       </div>

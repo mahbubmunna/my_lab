@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { Github, Linkedin, Mail, Rss } from 'lucide-react';
-import { CAL_URL, EMAIL, GITHUB_URL, LINKEDIN_URL } from '@/lib/site';
+import { BOOK_PATH, EMAIL, GITHUB_URL, LINKEDIN_URL } from '@/lib/site';
 
 const socialLinks = [
   { href: LINKEDIN_URL, icon: Linkedin, label: 'LinkedIn' },
@@ -26,14 +26,12 @@ export default function Footer() {
           <p className="text-muted-foreground text-sm">
             Voice agents, AI products, and the apps around them.
           </p>
-          <a
-            href={CAL_URL}
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            href={BOOK_PATH}
             className="text-brand inline-block text-sm font-medium hover:underline"
           >
             Book a 30-min call →
-          </a>
+          </Link>
         </div>
 
         <ul className="flex gap-5 text-sm md:flex-col md:gap-2">

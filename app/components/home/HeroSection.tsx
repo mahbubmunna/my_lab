@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowUpRight } from 'lucide-react';
-import { CAL_URL } from '@/lib/site';
+import { ArrowRight } from 'lucide-react';
+import { BOOK_PATH } from '@/lib/site';
 
 export default function HeroSection() {
   return (
@@ -30,15 +30,13 @@ export default function HeroSection() {
           </p>
 
           <div className="flex flex-col gap-3 pt-2 sm:flex-row">
-            <a
-              href={CAL_URL}
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href={BOOK_PATH}
               className="bg-primary text-primary-foreground hover:bg-primary/90 inline-flex h-11 items-center justify-center gap-1.5 rounded-lg px-6 text-base font-medium transition-colors"
             >
               Book a 30-min call
-              <ArrowUpRight className="h-4 w-4" />
-            </a>
+              <ArrowRight className="h-4 w-4" />
+            </Link>
             <Link
               href="/#work"
               className="hover:bg-secondary border-border inline-flex h-11 items-center justify-center rounded-lg border px-6 text-base font-medium transition-colors"

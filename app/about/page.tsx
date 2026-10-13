@@ -1,7 +1,8 @@
+import Link from 'next/link';
 import { Metadata } from 'next';
 import Image from 'next/image';
-import { ArrowUpRight } from 'lucide-react';
-import { CAL_URL, EMAIL, GITHUB_URL, LINKEDIN_URL } from '@/lib/site';
+import { ArrowRight } from 'lucide-react';
+import { BOOK_PATH, EMAIL, GITHUB_URL, LINKEDIN_URL } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'About',
@@ -163,15 +164,13 @@ export default function AboutPage() {
         </p>
       </div>
 
-      <a
-        href={CAL_URL}
-        target="_blank"
-        rel="noopener noreferrer"
+      <Link
+        href={BOOK_PATH}
         className="bg-primary text-primary-foreground hover:bg-primary/90 mt-10 inline-flex h-11 items-center gap-1.5 rounded-lg px-6 font-medium transition-colors"
       >
         Book a 30-min call
-        <ArrowUpRight className="h-4 w-4" />
-      </a>
+        <ArrowRight className="h-4 w-4" />
+      </Link>
     </div>
   );
 }
