@@ -15,7 +15,7 @@ const projects: ProjectCardProps[] = [
     ctaLabel: 'Visit ezyglobal.ai',
     description:
       'A business-setup platform for corporate service providers in the UAE. Nora, a voice guide, walks customers through each step, an AI data room is built to cut manual document review, and a self-hosted Llama 3 model keeps every document on our own servers. I built most of it alone in about six months.',
-    tags: ['FastAPI', 'Next.js', 'vLLM', 'Llama 3', 'Kokoro TTS', 'Celery', 'PostgreSQL'],
+    tags: ['Llama 3 on vLLM', 'FastAPI', 'Next.js', 'Celery'],
   },
   {
     slug: 'mama-desk',
@@ -24,7 +24,7 @@ const projects: ProjectCardProps[] = [
     href: '/projects/mama-desk',
     description:
       'A front-desk voice agent for clinics that runs fully on local models. It answers in about a second, books real calendar slots, flags urgent cases for staff, and turns each call into a structured record.',
-    tags: ['Whisper', 'Llama 3.1', 'Kokoro TTS', 'Multi-agent', 'WebSockets'],
+    tags: ['Whisper', 'Llama 3.1', 'Kokoro TTS', 'Multi-agent'],
   },
   {
     slug: 'causelist-pro',
@@ -33,7 +33,7 @@ const projects: ProjectCardProps[] = [
     href: '/projects/causelist-pro',
     description:
       'Court case tracking for lawyers in Bangladesh. It scrapes the daily cause lists, sends a push alert when a tracked case is listed, and answers law questions with citations in Bangla and English. Built solo, app and admin portal.',
-    tags: ['Flutter', 'FastAPI', 'Scraping', 'Firebase', 'RAG'],
+    tags: ['Flutter', 'FastAPI', 'RAG'],
   },
   {
     slug: 'ratio-launcher',
@@ -42,8 +42,8 @@ const projects: ProjectCardProps[] = [
     href: 'https://play.google.com/store/apps/details?id=com.bllocosn',
     ctaLabel: 'See it on Google Play',
     description:
-      'A minimalist, grayscale Android launcher built for less distraction. I worked on it as a core engineer in native Kotlin, where a cross-platform framework would have limited what the OS lets you do.',
-    tags: ['Kotlin', 'Jetpack', 'Room', 'Android'],
+      'A minimalist, grayscale Android launcher built for less distraction. I owned the widgets section, including a music player with custom-drawn graphics and a notepad, in native Kotlin. The new codebase was modular and mixed Jetpack Compose, then just released, with classic Views.',
+    tags: ['Kotlin', 'Jetpack Compose', 'Android Views', 'Room'],
   },
 ];
 
