@@ -34,7 +34,7 @@ export default function ProjectCard({
         )}
       </div>
       <p className="text-muted-foreground mb-4 leading-relaxed">{description}</p>
-      <p className="text-muted-foreground/80 mb-4 font-mono text-xs">
+      <p className="text-muted-foreground mb-4 text-sm">
         {tags.join(' · ')}
       </p>
       {isExternal ? (
