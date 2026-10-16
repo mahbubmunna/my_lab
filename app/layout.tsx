@@ -20,7 +20,7 @@ const mono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: 'Mahbub Hassan | I build voice agents and the products around them',
+    default: 'Mahbub Hassan | I build voice agents and the AI products around them',
     template: '%s | Mahbub Hassan',
   },
   description:
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: 'Mahbub Hassan',
-    description: 'I build voice agents and the products around them.',
+    description: 'I build voice agents and the AI products around them.',
     url: SITE_URL,
     siteName: 'Mahbub Hassan',
     images: [{ url: '/mahbub-hassan-square.jpg', width: 512, height: 512 }],

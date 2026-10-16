@@ -9,18 +9,11 @@ export default function HeroSection() {
   return (
     <Container>
       <section className="flex flex-wrap items-end gap-x-[clamp(40px,6vw,88px)] gap-y-14 pt-[clamp(16px,3vw,48px)] pb-[clamp(72px,11vw,144px)]">
-        <div className="flex min-w-0 flex-[999_1_520px] flex-col gap-8">
-          <h1 className="text-foreground m-0 max-w-[14ch] text-[clamp(42px,5.6vw,84px)] leading-[0.98] font-medium tracking-[-0.045em]">
-            I build voice agents,{' '}
-            <span className="text-subtle">and the products around them.</span>
+        <div className="flex min-w-0 flex-[999_1_520px] flex-col gap-10">
+          <h1 className="text-foreground m-0 max-w-[13ch] text-[clamp(48px,7vw,104px)] leading-[0.98] font-medium tracking-[-0.045em]">
+            I build voice&nbsp;agents,{' '}
+            <span className="text-subtle">and the AI products around them.</span>
           </h1>
-          <p className="text-muted-foreground m-0 max-w-[520px] text-lg leading-relaxed">
-            <span className="text-foreground">The model is rarely what breaks.</span>{' '}
-            It&apos;s the voice that talks over you, the documents that can&apos;t
-            leave the building, the app nobody finished. That&apos;s the part
-            I&apos;ve worked on for the past 2+ years, from the backend to the
-            screen people actually touch.
-          </p>
           <div className="flex flex-wrap items-center gap-2">
             <BookButton href={BOOK_PATH} />
             <Link
