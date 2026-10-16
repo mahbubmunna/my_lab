@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import ThemeToggle from '../ui/ThemeToggle';
-import BrandDot from '../ui/BrandDot';
+import Image from 'next/image';
 import Container from './Container';
 
 const navLinks = [
@@ -15,10 +15,19 @@ export default function Navbar() {
       <Container className="flex h-[72px] items-center justify-between gap-3 md:h-[88px]">
         <Link
           href="/"
-          className="text-foreground inline-flex items-center gap-2.5 text-[15px] font-medium tracking-[-0.01em] whitespace-nowrap"
+          aria-label="Mahbub Hassan, home"
+          className="group text-foreground inline-flex items-center gap-2.5 text-[15px] font-medium tracking-[-0.01em] whitespace-nowrap"
         >
-          <BrandDot />
-          Mahbub Hassan
+          <span className="bg-muted relative h-8 w-8 shrink-0 overflow-hidden rounded-full">
+            <Image
+              src="/mahbub-hassan-square.jpg"
+              alt=""
+              fill
+              sizes="32px"
+              className="object-cover grayscale transition-[filter] duration-500 group-hover:grayscale-0"
+            />
+          </span>
+          <span className="hidden min-[420px]:inline">Mahbub Hassan</span>
         </Link>
         <nav aria-label="Primary" className="flex items-center">
           {navLinks.map((link) => (

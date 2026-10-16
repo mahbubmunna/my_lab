@@ -2,7 +2,8 @@ import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { format, parseISO } from 'date-fns';
-import { ArrowLeft, ArrowRight } from 'lucide-react';
+import { ArrowLeft } from 'lucide-react';
+import BookButton from '../../components/ui/BookButton';
 import { getPostData, getAllPostSlugs } from '@/lib/blog';
 import { BOOK_PATH } from '@/lib/site';
 import TableOfContents from '../../components/blog/TableOfContents';
@@ -84,13 +85,9 @@ export default async function PostPage({ params }: PostPageProps) {
               I&apos;m happy to talk it through. Thirty minutes, bring the
               problem.
             </p>
-            <Link
-              href={BOOK_PATH}
-              className="bg-primary text-primary-foreground hover:bg-primary/90 mt-4 inline-flex h-10 items-center gap-1.5 rounded-full px-5 text-sm font-medium transition-colors"
-            >
-              Book a 30-min call
-              <ArrowRight className="h-4 w-4" />
-            </Link>
+            <div className="mt-4">
+              <BookButton href={BOOK_PATH} />
+            </div>
           </aside>
         </article>
 
