@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Github, Linkedin, Mail, Rss } from 'lucide-react';
+import { ArrowRight, Github, Linkedin, Mail, Rss } from 'lucide-react';
 import { BOOK_PATH, EMAIL, GITHUB_URL, LINKEDIN_URL } from '@/lib/site';
 
 const socialLinks = [
@@ -28,9 +28,10 @@ export default function Footer() {
           </p>
           <Link
             href={BOOK_PATH}
-            className="text-brand inline-block text-sm font-medium hover:underline"
+            className="text-brand inline-flex items-center gap-1 text-sm font-medium hover:underline"
           >
-            Book a 30-min call →
+            Book a 30-min call
+            <ArrowRight className="h-3.5 w-3.5" />
           </Link>
         </div>
 

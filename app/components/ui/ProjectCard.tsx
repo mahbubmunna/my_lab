@@ -1,12 +1,12 @@
 import Link from 'next/link';
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowRight, ArrowUpRight } from 'lucide-react';
 
 export interface ProjectCardProps {
   slug: string;
   href: string; // internal route ('/projects/mama-desk') or external URL
   title: string;
   description: string;
-  tags: string[];
+  tags?: string[];
   status?: string; // e.g. 'Built and deployed', 'In development'
   ctaLabel?: string;
 }
@@ -15,7 +15,6 @@ export default function ProjectCard({
   href,
   title,
   description,
-  tags,
   status,
   ctaLabel = 'Read the case study',
 }: ProjectCardProps) {
@@ -34,9 +33,6 @@ export default function ProjectCard({
         )}
       </div>
       <p className="text-muted-foreground mb-4 leading-relaxed">{description}</p>
-      <p className="text-muted-foreground mb-4 text-sm">
-        {tags.join(' · ')}
-      </p>
       {isExternal ? (
         <a href={href} target="_blank" rel="noopener noreferrer" className={linkClasses}>
           {ctaLabel}
@@ -44,7 +40,8 @@ export default function ProjectCard({
         </a>
       ) : (
         <Link href={href} className={linkClasses}>
-          {ctaLabel} →
+          {ctaLabel}
+          <ArrowRight className="h-3.5 w-3.5" />
         </Link>
       )}
     </article>

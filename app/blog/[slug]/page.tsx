@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { format, parseISO } from 'date-fns';
-import { ArrowRight } from 'lucide-react';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { getPostData, getAllPostSlugs } from '@/lib/blog';
 import { BOOK_PATH } from '@/lib/site';
 import TableOfContents from '../../components/blog/TableOfContents';
@@ -55,9 +55,10 @@ export default async function PostPage({ params }: PostPageProps) {
           <header className="mb-10">
             <Link
               href="/blog"
-              className="text-muted-foreground hover:text-foreground text-sm"
+              className="text-muted-foreground hover:text-foreground inline-flex items-center gap-1 text-sm"
             >
-              ← All writing
+              <ArrowLeft className="h-3.5 w-3.5" />
+              All writing
             </Link>
             <h1 className="text-foreground mt-4 text-4xl leading-tight md:text-5xl">
               {title}

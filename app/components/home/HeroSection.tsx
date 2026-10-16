@@ -9,7 +9,7 @@ export default function HeroSection() {
       <div className="grid items-center gap-10 md:grid-cols-[1fr_auto] md:gap-14">
         <div className="order-2 space-y-6 md:order-1">
           <p className="text-muted-foreground text-sm font-medium tracking-wide">
-            AI engineer · Dhaka, working remotely
+            AI product engineer · Working remotely
           </p>
 
           <h1 className="text-foreground text-4xl leading-[1.1] sm:text-5xl">
@@ -19,14 +19,8 @@ export default function HeroSection() {
           <p className="text-muted-foreground max-w-xl text-lg leading-relaxed">
             The model is rarely what breaks. It&apos;s the voice that talks
             over you, the documents that can&apos;t leave the building, the app
-            nobody finished. That&apos;s the part I work on, from the backend
-            to the screen people actually touch.
-          </p>
-
-          <p className="text-muted-foreground max-w-xl text-base leading-relaxed">
-            Before AI, I spent 9+ years shipping 20+ mobile and web apps in
-            Flutter, Android, and React Native. One of them has over a million
-            downloads.
+            nobody finished. That&apos;s the part I&apos;ve worked on for the past
+            2+ years, from the backend to the screen people actually touch.
           </p>
 
           <div className="flex flex-col gap-3 pt-2 sm:flex-row">

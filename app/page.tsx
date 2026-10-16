@@ -14,8 +14,7 @@ const projects: ProjectCardProps[] = [
     href: 'https://ezyglobal.ai',
     ctaLabel: 'Visit ezyglobal.ai',
     description:
-      'A business-setup platform for corporate service providers in the UAE. Nora, a voice guide, walks customers through each step, an AI data room is built to cut manual document review, and a self-hosted Llama 3 model keeps every document on our own servers. I built most of it alone in about six months.',
-    tags: ['Llama 3 on vLLM', 'FastAPI', 'Next.js', 'Celery'],
+      'A business-setup platform for corporate service providers in the UAE. Nora, a voice guide, walks customers through each step, an AI data room is built to cut manual document review, and a private AI model on our own servers keeps every document in-house. I built most of it alone in about six months.',
   },
   {
     slug: 'mama-desk',
@@ -24,7 +23,6 @@ const projects: ProjectCardProps[] = [
     href: '/projects/mama-desk',
     description:
       'A front-desk voice agent for clinics that runs fully on local models. It answers in about a second, books real calendar slots, flags urgent cases for staff, and turns each call into a structured record.',
-    tags: ['Whisper', 'Llama 3.1', 'Kokoro TTS', 'Multi-agent'],
   },
   {
     slug: 'causelist-pro',
@@ -33,7 +31,6 @@ const projects: ProjectCardProps[] = [
     href: '/projects/causelist-pro',
     description:
       'Court case tracking for lawyers in Bangladesh. It scrapes the daily cause lists, sends a push alert when a tracked case is listed, and answers law questions with citations in Bangla and English. Built solo, app and admin portal.',
-    tags: ['Flutter', 'FastAPI', 'RAG'],
   },
   {
     slug: 'ratio-launcher',
@@ -42,8 +39,7 @@ const projects: ProjectCardProps[] = [
     href: 'https://play.google.com/store/apps/details?id=com.bllocosn',
     ctaLabel: 'See it on Google Play',
     description:
-      'A minimalist, grayscale Android launcher built for less distraction. I owned the widgets section, including a music player with custom-drawn graphics and a notepad, in native Kotlin. The new codebase was modular and mixed Jetpack Compose, then just released, with classic Views.',
-    tags: ['Kotlin', 'Jetpack Compose', 'Android Views', 'Room'],
+      'A minimalist, grayscale Android launcher built for less distraction. I owned the widgets section, including a music player with custom-drawn graphics and a notepad,.',
   },
 ];
 
@@ -65,8 +61,12 @@ export default function HomePage() {
       <section className="mx-auto max-w-5xl px-4 py-10">
         <div className="mb-6 flex items-baseline justify-between gap-4">
           <h2 className="text-foreground text-3xl">Writing</h2>
-          <Link href="/blog" className="text-brand text-sm font-medium hover:underline">
-            All writing →
+          <Link
+            href="/blog"
+            className="text-brand inline-flex items-center gap-1 text-sm font-medium hover:underline"
+          >
+            All writing
+            <ArrowRight className="h-3.5 w-3.5" />
           </Link>
         </div>
         {posts.length > 0 ? (

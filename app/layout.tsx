@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     template: '%s | Mahbub Hassan',
   },
   description:
-    'AI engineer building voice agents, private RAG, and the web and mobile apps around them. Case studies and long-form notes on what broke in production and how I fixed it.',
+    'AI product engineer building voice agents, private RAG, and the web and mobile apps around them. Case studies and long-form notes on what broke in production and how I fixed it.',
   keywords: [
     'Mahbub Hassan',
     'AI engineer',

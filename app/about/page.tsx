@@ -33,7 +33,7 @@ export default function AboutPage() {
         <div>
           <h1 className="text-foreground mb-1 text-4xl">About</h1>
           <p className="text-muted-foreground">
-            AI engineer. I build voice agents, and the products around them.
+            AI product engineer. I build voice agents, and the products around them.
           </p>
         </div>
       </header>
@@ -43,9 +43,11 @@ export default function AboutPage() {
           The short version
         </p>
         <p>
-          I&apos;m an AI engineer in Dhaka. I build voice agents and the
-          products around them, and before AI I spent 9+ years shipping mobile
-          and web apps. The longer story is below, if you have five minutes.
+          I&apos;m an AI product engineer. For the past 2+ years I&apos;ve worked
+          in AI and the backend behind it: voice agents, private document
+          search, and the systems that keep them running. That sits on 7+ years
+          of shipping mobile and web apps. The longer story is below, if you
+          have five minutes.
         </p>
       </div>
 
