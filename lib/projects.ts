@@ -77,7 +77,7 @@ export const caseStudies: CaseStudy[] = [
             alt: 'Mama Desk live call console mid-booking',
             label: 'mamadesk.oaimama.com / live calls',
             caption:
-              'A booking call in progress: the agent state, the live transcript with the sources each answer is grounded in, retrieved knowledge with scores, and every action the agent takes. From the interactive demo; all data is sample data.',
+              'A booking call in progress: the agent state, the live transcript with the sources each answer is grounded in, retrieved knowledge with scores, and every action the agent takes.',
             width: 2880,
             height: 1800,
           },
