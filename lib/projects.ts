@@ -17,6 +17,7 @@ export interface CaseStudy {
   oneLiner: string;
   tags: string[];
   github: string;
+  demo?: string; // live interactive demo
   stats?: { value: string; label: string }[];
   capabilities: { title: string; body: string }[];
   rows: ScreenRow[];
@@ -65,80 +66,95 @@ export const caseStudies: CaseStudy[] = [
         body: 'Every call becomes a schema-validated medical record (chief complaint, vitals mentioned, history) in FHIR R4 format.',
       },
     ],
+    demo: 'https://mamadesk.oaimama.com',
     rows: [
       {
-        heading: 'Operations Center',
+        heading: 'Live call console',
         layout: 'full',
         screens: [
           {
-            src: '/projects/mamadesk-operations-center.png',
-            alt: 'Mama Desk operations center dashboard',
-            label: 'mama-desk / operations center',
+            src: '/projects/mamadesk-live-booking.png',
+            alt: 'Mama Desk live call console mid-booking',
+            label: 'mamadesk.oaimama.com / live calls',
             caption:
-              'Operations Center: live agent coordination matrix, triage monitor, and real-time intake stream across all four agents.',
-            width: 1600,
-            height: 1280,
+              'A booking call in progress: the agent state, the live transcript with the sources each answer is grounded in, retrieved knowledge with scores, and every action the agent takes. From the interactive demo; all data is sample data.',
+            width: 2880,
+            height: 1800,
           },
         ],
       },
       {
+        heading: 'When the AI should not answer',
         layout: 'two-up',
         screens: [
           {
-            src: '/projects/mamadesk-live-call.png',
-            alt: 'Live AI front-desk voice call',
-            label: 'live AI voice call',
+            src: '/projects/mamadesk-live-handoff.png',
+            alt: 'Billing question escalated to a human',
+            label: 'live calls / billing escalation',
             caption:
-              'Live call: the AI receptionist mid-conversation, with intake context extracted in real time.',
-            width: 1280,
-            height: 1024,
+              'A refund request with no policy behind it: retrieval comes back weak, confidence drops below the threshold, and the call goes to a person.',
+            width: 2880,
+            height: 1800,
           },
           {
-            src: '/projects/mamadesk-ehr-intake.png',
-            alt: 'Structured EHR intake records',
-            label: 'structured EHR intake',
+            src: '/projects/mamadesk-handoff-desk.png',
+            alt: 'Handoff desk with the context the AI gathered',
+            label: 'handoff desk',
             caption:
-              'Structured intake records: AI triage classification with confidence, extracted vitals, and a FHIR R4 payload preview.',
-            width: 1600,
-            height: 1280,
+              'Reception picks up with the transcript, what the AI already verified, and the knowledge it checked, so the caller never repeats themselves.',
+            width: 2880,
+            height: 1800,
           },
         ],
       },
       {
-        layout: 'full',
+        heading: 'What the caller sees',
+        layout: 'phones',
         screens: [
           {
-            src: '/projects/mamadesk-schedule-hub.png',
-            alt: 'Calendar allocation hub with AI-booked appointments',
-            label: 'calendar allocation hub',
-            caption:
-              'Calendar Allocation Hub: AI-booked, emergency, and walk-in slots managed across doctors and departments.',
-            width: 1600,
-            height: 1000,
+            src: '/projects/mamadesk-phone-caller-start.png',
+            alt: 'Talk to Sarah start screen on a phone',
+            caption: 'One tap to talk, in English or Bangla.',
+            width: 1170,
+            height: 2532,
+          },
+          {
+            src: '/projects/mamadesk-phone-caller-incall.png',
+            alt: 'Voice call in progress on a phone',
+            caption: 'The voice ring follows the agent: listening, thinking, speaking.',
+            width: 1170,
+            height: 2532,
+          },
+          {
+            src: '/projects/mamadesk-phone-caller-ended.png',
+            alt: 'Call ended with the booked appointment',
+            caption: 'The call ends with the booking confirmed on screen.',
+            width: 1170,
+            height: 2532,
           },
         ],
       },
       {
-        heading: 'Clinic-facing experience',
+        heading: 'Around the call',
         layout: 'two-up',
         screens: [
           {
             src: '/projects/mamadesk-patient-portal.png',
-            alt: 'Hope Medical Clinic patient portal',
-            label: 'hope medical clinic',
+            alt: 'Patient portal with upcoming appointments',
+            label: 'patient portal',
             caption:
-              'Patient portal: the “Talk to Front Desk” voice entry point embedded in the clinic site.',
-            width: 1280,
-            height: 853,
+              'Patient portal: appointments the agent booked, reports, prescriptions and billing in one place.',
+            width: 2880,
+            height: 1800,
           },
           {
-            src: '/projects/mamadesk-appointment-confirmation.png',
-            alt: 'Appointment confirmation page',
-            label: 'appointment confirmation',
+            src: '/projects/mamadesk-agent-config.png',
+            alt: 'Agent configuration: knowledge, tools, handoff rules',
+            label: 'agent configuration',
             caption:
-              'Appointment confirmation: the booking the AI scheduled, confirmed back to the patient.',
-            width: 1280,
-            height: 701,
+              'Agent configuration: what it may look up, which tools it may run, and the rules that send a caller to a person.',
+            width: 2880,
+            height: 1800,
           },
         ],
       },

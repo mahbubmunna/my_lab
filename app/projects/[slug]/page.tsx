@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, ArrowUpRight } from 'lucide-react';
 import {
   BrowserFrame,
   PhoneFrame,
@@ -87,18 +87,33 @@ export default async function ProjectPage({ params }: PageProps) {
           ))}
         </div>
 
-        <div className="flex gap-4 pt-1">
+        <div className="flex flex-wrap gap-3 pt-1">
+          {study.demo && (
+            <a
+              href={study.demo}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-primary text-primary-foreground hover:bg-primary/90 inline-flex h-11 items-center justify-center gap-2 rounded-full px-6 text-sm font-semibold transition-colors"
+            >
+              Try the live demo
+              <ArrowUpRight className="h-4 w-4" />
+            </a>
+          )}
           <a
             href={study.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-primary text-primary-foreground hover:bg-primary/90 inline-flex h-11 items-center justify-center rounded-full px-6 text-sm font-semibold transition-colors"
+            className={`inline-flex h-11 items-center justify-center rounded-full px-6 text-sm font-semibold transition-colors ${
+              study.demo
+                ? 'border-border hover:bg-secondary border'
+                : 'bg-primary text-primary-foreground hover:bg-primary/90'
+            }`}
           >
             See on GitHub
           </a>
           <Link
             href="/about"
-            className="bg-secondary text-secondary-foreground hover:bg-secondary/80 border-border/50 inline-flex h-11 items-center justify-center rounded-lg border px-6 text-sm font-medium transition-colors"
+            className="border-border hover:bg-secondary inline-flex h-11 items-center justify-center rounded-full border px-6 text-sm font-medium transition-colors"
           >
             Get in Touch
           </Link>
@@ -161,7 +176,11 @@ export default async function ProjectPage({ params }: PageProps) {
             )}
 
             {row.layout === 'phones' ? (
-              <div className="grid grid-cols-2 justify-items-center gap-x-4 gap-y-10 lg:grid-cols-4">
+              <div
+                className={`grid grid-cols-2 justify-items-center gap-x-4 gap-y-10 ${
+                  row.screens.length === 3 ? 'lg:grid-cols-3' : 'lg:grid-cols-4'
+                }`}
+              >
                 {row.screens.map((screen) => (
                   <PhoneFrame key={screen.src} screen={screen} />
                 ))}
