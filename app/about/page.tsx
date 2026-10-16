@@ -92,7 +92,10 @@ export default function AboutPage() {
           passed a million downloads, and I led a team of ten mobile engineers.
         </p>
         <p>
-          Then my day job turned to AI.
+          Then, in August 2024, my day job turned to AI and the backend. We
+          were building a document management system, and I set up RAG and
+          intelligent indexing so people could find and ask about any file
+          without opening it.
         </p>
 
         <h2>The documents that couldn&apos;t leave the building</h2>
@@ -168,7 +171,7 @@ export default function AboutPage() {
 
       <Link
         href={BOOK_PATH}
-        className="bg-primary text-primary-foreground hover:bg-primary/90 mt-10 inline-flex h-11 items-center gap-1.5 rounded-lg px-6 font-medium transition-colors"
+        className="bg-primary text-primary-foreground hover:bg-primary/90 mt-10 inline-flex h-11 items-center gap-1.5 rounded-full px-6 font-medium transition-colors"
       >
         Book a 30-min call
         <ArrowRight className="h-4 w-4" />

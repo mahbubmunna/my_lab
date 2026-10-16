@@ -3,6 +3,7 @@ title: "Where 1.35 seconds go in a local voice agent"
 date: "2026-10-12"
 summary: "I timed every step of Mama Desk, my clinic voice agent that runs fully on local models. The slowest part was never the LLM. First it was the voice, and now it's the silence."
 tags: ["Voice AI", "Latency", "Local LLM", "Whisper", "Kokoro"]
+meter: "1.35 s"
 ---
 
 On a phone call, one second of silence feels long. Two seconds feels like the line dropped. If you build voice agents, this is the number that decides whether people talk to your agent or hang up on it.

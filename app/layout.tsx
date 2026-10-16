@@ -1,25 +1,19 @@
 import type { Metadata } from 'next';
-import { IBM_Plex_Sans, IBM_Plex_Mono, Source_Serif_4 } from 'next/font/google';
+import { Geist, Geist_Mono } from 'next/font/google';
 import '../styles/globals.css';
 import { ThemeProvider } from './components/layout/ThemeProvider';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import { SITE_URL } from '@/lib/site';
 
-const sans = IBM_Plex_Sans({
+const sans = Geist({
   subsets: ['latin'],
   weight: ['400', '500', '600'],
   variable: '--font-sans',
 });
-const serif = Source_Serif_4({
+const mono = Geist_Mono({
   subsets: ['latin'],
-  weight: ['400', '600'],
-  style: ['normal', 'italic'],
-  variable: '--font-serif',
-});
-const mono = IBM_Plex_Mono({
-  subsets: ['latin'],
-  weight: ['400'],
+  weight: ['400', '500'],
   variable: '--font-mono',
 });
 
@@ -64,7 +58,7 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${sans.variable} ${serif.variable} ${mono.variable}`}
+      className={`${sans.variable} ${mono.variable}`}
     >
       <body>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>

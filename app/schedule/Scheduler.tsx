@@ -236,7 +236,7 @@ export default function Scheduler() {
               <ArrowLeft className="h-4 w-4" /> Change time
             </button>
             <p className="text-muted-foreground text-xs font-medium tracking-wide uppercase">Your call</p>
-            <p className="text-foreground mt-1 font-serif text-xl">{formatFull(slot, tz, hour12)}</p>
+            <p className="text-foreground mt-1 text-xl font-medium tracking-[-0.02em]">{formatFull(slot, tz, hour12)}</p>
             <p className="text-muted-foreground mt-1 text-sm">30 minutes · {tz.replace(/_/g, ' ')}</p>
           </div>
 
@@ -292,7 +292,7 @@ export default function Scheduler() {
             <button
               type="submit"
               disabled={submitting}
-              className="bg-primary text-primary-foreground hover:bg-primary/90 inline-flex h-11 w-full items-center justify-center gap-2 rounded-lg px-6 font-medium transition-colors disabled:opacity-60"
+              className="bg-primary text-primary-foreground hover:bg-primary/90 inline-flex h-11 w-full items-center justify-center gap-2 rounded-full px-6 font-medium transition-colors disabled:opacity-60"
             >
               {submitting && <Loader2 className="h-4 w-4 animate-spin" />}
               {submitting ? 'Booking…' : 'Confirm booking'}
@@ -304,7 +304,7 @@ export default function Scheduler() {
           {/* Calendar */}
           <div className="border-border p-6 md:border-r md:p-8">
             <div className="mb-5 flex items-center justify-between">
-              <p className="text-foreground font-serif text-lg font-semibold">{monthLabel}</p>
+              <p className="text-foreground text-lg font-medium tracking-[-0.02em]">{monthLabel}</p>
               <div className="flex gap-1">
                 <button
                   type="button"

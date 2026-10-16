@@ -30,6 +30,7 @@ export interface PostData {
   tags: string[];
   draft?: boolean; // hidden from lists, RSS and static paths
   canonical?: string; // set only if the original lives elsewhere
+  meter?: string; // optional measured number drawn as a bar on the home page, e.g. '1.35 s'
   readingMinutes?: number;
   contentHtml?: string;
   headings?: Heading[]; // NEW: Field to store ToC data

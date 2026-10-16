@@ -92,7 +92,7 @@ export default async function ProjectPage({ params }: PageProps) {
             href={study.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-primary text-primary-foreground hover:bg-primary/90 inline-flex h-11 items-center justify-center rounded-lg px-6 text-sm font-semibold transition-colors"
+            className="bg-primary text-primary-foreground hover:bg-primary/90 inline-flex h-11 items-center justify-center rounded-full px-6 text-sm font-semibold transition-colors"
           >
             See on GitHub
           </a>

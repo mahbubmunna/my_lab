@@ -35,12 +35,15 @@ const config: Config = {
 
       fontFamily: {
         sans: ['var(--font-sans)', 'system-ui', 'sans-serif'],
-        serif: ['var(--font-serif)', 'Georgia', 'serif'],
         mono: ['var(--font-mono)', 'ui-monospace', 'monospace'],
       },
 
       colors: {
         brand: 'hsl(var(--brand))',
+
+        'brand-on-primary': 'hsl(var(--brand-on-primary))',
+
+        subtle: 'hsl(var(--subtle-foreground))',
 
         border: 'hsl(var(--border))',
 

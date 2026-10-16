@@ -1,68 +1,66 @@
 import Link from 'next/link';
-import { ArrowRight, Github, Linkedin, Mail, Rss } from 'lucide-react';
 import { BOOK_PATH, EMAIL, GITHUB_URL, LINKEDIN_URL } from '@/lib/site';
-
-const socialLinks = [
-  { href: LINKEDIN_URL, icon: Linkedin, label: 'LinkedIn' },
-  { href: GITHUB_URL, icon: Github, label: 'GitHub' },
-  { href: `mailto:${EMAIL}`, icon: Mail, label: 'Email' },
-  { href: '/rss.xml', icon: Rss, label: 'RSS feed' },
-];
+import Container from './Container';
 
 const siteLinks = [
+  { name: 'Book a 30-min call', href: BOOK_PATH },
   { name: 'Work', href: '/#work' },
   { name: 'Writing', href: '/blog' },
   { name: 'About', href: '/about' },
 ];
 
+const elsewhere = [
+  { name: 'linkedin.com/in/munnacs', href: LINKEDIN_URL },
+  { name: 'github.com/mahbubmunna', href: GITHUB_URL },
+  { name: EMAIL, href: `mailto:${EMAIL}` },
+  { name: '/rss.xml', href: '/rss.xml' },
+];
+
 export default function Footer() {
   return (
-    <footer className="border-t">
-      <div className="mx-auto flex max-w-5xl flex-col gap-8 px-4 py-10 md:flex-row md:items-start md:justify-between">
-        <div className="max-w-sm space-y-2">
-          <Link href="/" className="font-serif text-lg font-semibold">
-            Mahbub Hassan
-          </Link>
-          <p className="text-muted-foreground text-sm">
-            Voice agents, AI products, and the apps around them.
-          </p>
-          <Link
-            href={BOOK_PATH}
-            className="text-brand inline-flex items-center gap-1 text-sm font-medium hover:underline"
-          >
-            Book a 30-min call
-            <ArrowRight className="h-3.5 w-3.5" />
-          </Link>
-        </div>
+    <footer>
+      <Container>
+        <div className="flex flex-wrap justify-between gap-8 border-t pt-10 pb-14">
+          <div className="flex max-w-sm flex-col gap-2 text-[15px]">
+            <p className="text-foreground font-medium">
+              Mahbub Hassan <span className="text-muted-foreground">· AI Product Engineer</span>
+            </p>
+            <p className="text-muted-foreground">
+              Voice agents, AI products, and the apps around them.
+            </p>
+          </div>
 
-        <ul className="flex gap-5 text-sm md:flex-col md:gap-2">
-          {siteLinks.map((link) => (
-            <li key={link.name}>
-              <Link href={link.href} className="text-muted-foreground hover:text-foreground">
-                {link.name}
-              </Link>
-            </li>
-          ))}
-        </ul>
-
-        <div className="flex gap-4">
-          {socialLinks.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              target={link.href.startsWith('http') ? '_blank' : undefined}
-              rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-foreground transition-colors"
-              aria-label={link.label}
-            >
-              <link.icon className="h-5 w-5" />
-            </a>
-          ))}
+          <div className="flex flex-wrap gap-12">
+            <ul className="flex flex-col gap-1 text-[15px]">
+              {siteLinks.map((link) => (
+                <li key={link.name}>
+                  <Link
+                    href={link.href}
+                    className="text-foreground hover:text-muted-foreground inline-block py-1 transition-colors"
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <ul className="flex flex-col gap-1 font-mono text-[13px]">
+              {elsewhere.map((link) => (
+                <li key={link.name}>
+                  <a
+                    href={link.href}
+                    target={link.href.startsWith('http') ? '_blank' : undefined}
+                    rel="noopener noreferrer"
+                    className="text-muted-foreground hover:text-foreground inline-block py-[5px] transition-colors"
+                  >
+                    {link.name}
+                  </a>
+                </li>
+              ))}
+              <li className="text-muted-foreground py-[5px]">© {new Date().getFullYear()} Mahbub Hassan</li>
+            </ul>
+          </div>
         </div>
-      </div>
-      <p className="text-muted-foreground pb-8 text-center text-xs">
-        © {new Date().getFullYear()} Mahbub Hassan
-      </p>
+      </Container>
     </footer>
   );
 }

@@ -31,7 +31,7 @@ export default function BlogPage() {
           {posts.map(({ slug, title, date, summary, tags }) => (
             <li key={slug} className="py-6">
               <Link href={`/blog/${slug}`} className="group block space-y-2">
-                <h2 className="text-foreground group-hover:text-brand text-2xl transition-colors">
+                <h2 className="text-foreground group-hover:text-muted-foreground text-2xl transition-colors">
                   {title}
                 </h2>
                 <p className="text-muted-foreground leading-relaxed">{summary}</p>

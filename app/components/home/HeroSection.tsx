@@ -1,58 +1,69 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowRight } from 'lucide-react';
+import { ArrowDown } from 'lucide-react';
 import { BOOK_PATH } from '@/lib/site';
+import Container from '../layout/Container';
+import BookButton from '../ui/BookButton';
+
+const facts = [
+  'Technical Lead at FairPattern',
+  'AI and backend since 2024',
+  'Shipping apps since 2016',
+  'Working remotely',
+];
 
 export default function HeroSection() {
   return (
-    <section className="mx-auto max-w-5xl px-4 pt-14 pb-10 md:pt-24 md:pb-16">
-      <div className="grid items-center gap-10 md:grid-cols-[1fr_auto] md:gap-14">
-        <div className="order-2 space-y-6 md:order-1">
-          <p className="text-muted-foreground text-sm font-medium tracking-wide">
-            AI product engineer · Working remotely
-          </p>
-
-          <h1 className="text-foreground text-4xl leading-[1.1] sm:text-5xl">
-            I build voice agents, and the products around them.
+    <Container>
+      <section className="flex flex-wrap items-end gap-x-[clamp(40px,6vw,88px)] gap-y-14 pt-[clamp(40px,7vw,104px)] pb-[clamp(96px,12vw,160px)]">
+        <div className="flex min-w-0 flex-[999_1_520px] flex-col gap-10">
+          <h1 className="text-foreground m-0 max-w-[13ch] text-[clamp(44px,6.6vw,96px)] leading-[0.98] font-medium tracking-[-0.045em]">
+            I build voice agents,{' '}
+            <span className="text-subtle">and the products around them.</span>
           </h1>
-
-          <p className="text-muted-foreground max-w-xl text-lg leading-relaxed">
-            The model is rarely what breaks. It&apos;s the voice that talks
-            over you, the documents that can&apos;t leave the building, the app
-            nobody finished. That&apos;s the part I&apos;ve worked on for the past
-            2+ years, from the backend to the screen people actually touch.
+          <p className="text-muted-foreground m-0 max-w-[520px] text-lg leading-relaxed">
+            <span className="text-foreground">The model is rarely what breaks.</span>{' '}
+            It&apos;s the voice that talks over you, the documents that can&apos;t
+            leave the building, the app nobody finished. That&apos;s the part
+            I&apos;ve worked on for the past 2+ years, from the backend to the
+            screen people actually touch.
           </p>
-
-          <div className="flex flex-col gap-3 pt-2 sm:flex-row">
-            <Link
-              href={BOOK_PATH}
-              className="bg-primary text-primary-foreground hover:bg-primary/90 inline-flex h-11 items-center justify-center gap-1.5 rounded-lg px-6 text-base font-medium transition-colors"
-            >
-              Book a 30-min call
-              <ArrowRight className="h-4 w-4" />
-            </Link>
+          <div className="flex flex-wrap items-center gap-2">
+            <BookButton href={BOOK_PATH} />
             <Link
               href="/#work"
-              className="hover:bg-secondary border-border inline-flex h-11 items-center justify-center rounded-lg border px-6 text-base font-medium transition-colors"
+              className="text-foreground hover:text-muted-foreground inline-flex h-[52px] items-center gap-2 px-5 text-[15px] font-medium transition-colors"
             >
               See my work
+              <ArrowDown className="h-3.5 w-3.5" strokeWidth={1.75} />
             </Link>
           </div>
         </div>
 
-        <div className="order-1 md:order-2">
-          <div className="border-border relative aspect-[4/5] w-40 overflow-hidden rounded-2xl border shadow-sm sm:w-48 md:w-64">
+        <figure className="group m-0 flex max-w-[260px] flex-[1_1_240px] flex-col gap-4 sm:max-w-[380px] sm:flex-[1_1_280px]">
+          <div className="bg-muted relative aspect-[4/5] w-full overflow-hidden rounded-[4px]">
             <Image
               src="/mahbub-hassan.jpg"
-              alt="Mahbub Hassan"
+              alt="Portrait of Mahbub Hassan"
               fill
               priority
-              className="object-cover"
-              sizes="(max-width: 768px) 192px, 256px"
+              sizes="(max-width: 768px) 90vw, 380px"
+              className="object-cover contrast-[1.04] grayscale transition-[filter] duration-700 ease-out group-hover:grayscale-0"
             />
           </div>
-        </div>
-      </div>
-    </section>
+          <figcaption className="flex flex-col gap-3.5">
+            <span className="flex flex-col text-[22px] leading-tight font-medium tracking-[-0.02em]">
+              <span className="text-foreground">Mahbub Hassan</span>
+              <span className="text-subtle">AI Product Engineer</span>
+            </span>
+            <span className="text-muted-foreground flex flex-col gap-0.5 font-mono text-[13px] leading-relaxed">
+              {facts.map((fact) => (
+                <span key={fact}>{fact}</span>
+              ))}
+            </span>
+          </figcaption>
+        </figure>
+      </section>
+    </Container>
   );
 }

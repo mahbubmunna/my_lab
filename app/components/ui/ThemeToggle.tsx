@@ -1,29 +1,19 @@
-"use client";
+'use client';
 
-import * as React from "react";
-import { useTheme } from "next-themes";
-// Assuming you have an icon library like lucide-react
-// If not, use simple text buttons for now
-// pnpm install lucide-react
-
-import { Sun, Moon } from "lucide-react";
-import { Button } from "./Button"; // Use the Button component we made
+import { useTheme } from 'next-themes';
+import { Contrast } from 'lucide-react';
 
 export default function ThemeToggle() {
-  const { setTheme, theme } = useTheme();
+  const { resolvedTheme, setTheme } = useTheme();
 
   return (
-    <Button
-      variant="ghost"
-      size="sm"
-      onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+    <button
+      type="button"
+      onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
+      aria-label="Toggle dark mode"
+      className="text-foreground hover:text-muted-foreground inline-flex h-11 w-11 items-center justify-center transition-colors"
     >
-      {theme === "light" ? (
-        <Moon className="h-5 w-5" />
-      ) : (
-        <Sun className="h-5 w-5" />
-      )}
-      <span className="sr-only">Toggle theme</span>
-    </Button>
+      <Contrast className="h-4 w-4" strokeWidth={1.5} />
+    </button>
   );
 }

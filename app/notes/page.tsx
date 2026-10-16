@@ -130,7 +130,7 @@ export default function AINotesPage() {
             <button
               type="submit"
               disabled={isPending || inputNote.length < MIN_LENGTH}
-              className="text-md bg-primary text-primary-foreground hover:bg-primary/90 inline-flex h-12 w-full items-center justify-center rounded-lg px-8 py-3 font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-50"
+              className="text-md bg-primary text-primary-foreground hover:bg-primary/90 inline-flex h-12 w-full items-center justify-center rounded-full px-8 py-3 font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-50"
             >
               {isPending ? (
                 <>

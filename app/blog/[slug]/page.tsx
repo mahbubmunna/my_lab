@@ -77,7 +77,7 @@ export default async function PostPage({ params }: PostPageProps) {
           />
 
           <aside className="bg-muted mt-16 rounded-xl p-6">
-            <p className="text-foreground font-serif text-xl">
+            <p className="text-foreground text-xl font-medium tracking-[-0.02em]">
               Dealing with something similar?
             </p>
             <p className="text-muted-foreground mt-2">
@@ -86,7 +86,7 @@ export default async function PostPage({ params }: PostPageProps) {
             </p>
             <Link
               href={BOOK_PATH}
-              className="bg-primary text-primary-foreground hover:bg-primary/90 mt-4 inline-flex h-10 items-center gap-1.5 rounded-lg px-5 text-sm font-medium transition-colors"
+              className="bg-primary text-primary-foreground hover:bg-primary/90 mt-4 inline-flex h-10 items-center gap-1.5 rounded-full px-5 text-sm font-medium transition-colors"
             >
               Book a 30-min call
               <ArrowRight className="h-4 w-4" />

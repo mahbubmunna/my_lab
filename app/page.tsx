@@ -1,122 +1,155 @@
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import HeroSection from './components/home/HeroSection';
-import FeaturedProjects from './components/home/FeaturedProjects';
-import type { ProjectCardProps } from './components/ui/ProjectCard';
+import SelectedWork, { type WorkItem } from './components/home/SelectedWork';
+import Container from './components/layout/Container';
+import BookButton from './components/ui/BookButton';
 import { getSortedPostsData } from '@/lib/blog';
 import { BOOK_PATH } from '@/lib/site';
 
-const projects: ProjectCardProps[] = [
+const work: WorkItem[] = [
   {
-    slug: 'ezyglobal-ai',
-    title: 'ezyglobal.ai',
+    name: 'ezyglobal.ai',
+    line: 'Voice guide and private document AI for UAE business setup',
     status: 'Built and deployed',
-    href: 'https://ezyglobal.ai',
-    ctaLabel: 'Visit ezyglobal.ai',
+    live: true,
     description:
-      'A business-setup platform for corporate service providers in the UAE. Nora, a voice guide, walks customers through each step, an AI data room is built to cut manual document review, and a private AI model on our own servers keeps every document in-house. I built most of it alone in about six months.',
+      'A business-setup platform for corporate service providers in the UAE. A voice guide named Nora walks customers through each step, an AI data room is built to cut manual document review, and a private model on our own servers keeps every document in-house.',
+    facts: [
+      { label: 'Role', value: 'Mostly solo' },
+      { label: 'Built in', value: '~6 months' },
+      { label: 'Inside', value: 'Voice guide, data room, private model' },
+    ],
+    href: 'https://ezyglobal.ai',
+    cta: 'Visit ezyglobal.ai',
   },
   {
-    slug: 'mama-desk',
-    title: 'Mama Desk',
+    name: 'Mama Desk',
+    line: 'A clinic front desk that talks, on fully local models',
     status: 'In development',
-    href: '/projects/mama-desk',
+    live: false,
     description:
       'A front-desk voice agent for clinics that runs fully on local models. It answers in about a second, books real calendar slots, flags urgent cases for staff, and turns each call into a structured record.',
+    facts: [
+      { label: 'Response', value: '~1 second' },
+      { label: 'Runs on', value: 'Local models' },
+    ],
+    href: '/projects/mama-desk',
+    cta: 'Read the case study',
   },
   {
-    slug: 'causelist-pro',
-    title: 'CauseList Pro',
+    name: 'CauseList Pro',
+    line: 'Court case alerts and cited law answers for lawyers in Bangladesh',
     status: 'In development',
-    href: '/projects/causelist-pro',
+    live: false,
     description:
-      'Court case tracking for lawyers in Bangladesh. It scrapes the daily cause lists, sends a push alert when a tracked case is listed, and answers law questions with citations in Bangla and English. Built solo, app and admin portal.',
+      'Court case tracking for lawyers in Bangladesh. It reads the daily cause lists, sends a push alert when a tracked case is listed, and answers law questions with citations in Bangla and English.',
+    facts: [
+      { label: 'Role', value: 'Built solo, app and admin portal' },
+      { label: 'Languages', value: 'Bangla, English' },
+    ],
+    href: '/projects/causelist-pro',
+    cta: 'Read the case study',
   },
   {
-    slug: 'ratio-launcher',
-    title: 'Ratio Launcher',
-    status: 'Live on Google Play · 1M+ downloads',
-    href: 'https://play.google.com/store/apps/details?id=com.bllocosn',
-    ctaLabel: 'See it on Google Play',
+    name: 'Ratio Launcher',
+    line: 'A grayscale Android launcher built for less distraction',
+    status: 'Google Play · 1M+',
+    live: true,
     description:
-      'A minimalist, grayscale Android launcher built for less distraction. I owned the widgets section, including a music player with custom-drawn graphics and a notepad,.',
+      'A minimalist, grayscale Android launcher built for less distraction. I owned the widgets section, including a music player with custom-drawn graphics and a notepad.',
+    facts: [
+      { label: 'Downloads', value: '1M+' },
+      { label: 'Role', value: 'Owned the widgets section' },
+    ],
+    href: 'https://play.google.com/store/apps/details?id=com.bllocosn',
+    cta: 'See it on Google Play',
   },
-];
-
-// Shown until the first long-form articles are published.
-const upcoming = [
-  'Where 1.2 seconds go in a local voice agent',
-  'Teaching a voice agent when you have stopped talking',
-  'Keeping documents off third-party AI: self-hosting Llama 3 on vLLM',
 ];
 
 export default function HomePage() {
-  const posts = getSortedPostsData().slice(0, 3);
+  const [latest, ...older] = getSortedPostsData().slice(0, 4);
 
   return (
-    <div className="pb-16">
+    <>
       <HeroSection />
-      <FeaturedProjects projects={projects} />
+      <SelectedWork items={work} />
 
-      <section className="mx-auto max-w-5xl px-4 py-10">
-        <div className="mb-6 flex items-baseline justify-between gap-4">
-          <h2 className="text-foreground text-3xl">Writing</h2>
-          <Link
-            href="/blog"
-            className="text-brand inline-flex items-center gap-1 text-sm font-medium hover:underline"
-          >
-            All writing
-            <ArrowRight className="h-3.5 w-3.5" />
-          </Link>
-        </div>
-        {posts.length > 0 ? (
-          <ul className="divide-border divide-y">
-            {posts.map((post) => (
-              <li key={post.slug} className="py-4">
-                <Link href={`/blog/${post.slug}`} className="group block">
-                  <h3 className="text-foreground group-hover:text-brand text-xl transition-colors">
+      <Container>
+        <section
+          id="writing"
+          aria-labelledby="writing-h"
+          className="flex flex-col gap-8 pt-[clamp(96px,12vw,160px)]"
+        >
+          <div className="flex flex-wrap items-baseline justify-between gap-3">
+            <h2 id="writing-h" className="text-foreground m-0 font-mono text-[13px] font-medium tracking-normal">
+              Writing
+            </h2>
+            <Link
+              href="/blog"
+              className="text-muted-foreground hover:text-foreground inline-flex min-h-11 items-center gap-1.5 text-[15px] transition-colors"
+            >
+              All writing
+              <ArrowRight className="h-3.5 w-3.5" strokeWidth={1.75} />
+            </Link>
+          </div>
+
+          {latest && (
+            <Link href={`/blog/${latest.slug}`} className="group text-foreground flex flex-col gap-6 border-t pt-8">
+              <span className="max-w-[18ch] text-[clamp(28px,3.6vw,44px)] leading-[1.1] font-medium tracking-[-0.03em] transition-colors group-hover:text-muted-foreground">
+                {latest.title}
+              </span>
+              <span className="text-muted-foreground max-w-[560px] text-[17px] leading-relaxed">
+                {latest.summary}
+              </span>
+              {latest.meter && (
+                <span aria-hidden="true" className="flex max-w-[560px] flex-col gap-2.5">
+                  <span className="bg-brand block h-0.5" />
+                  <span className="text-muted-foreground flex justify-between font-mono text-xs">
+                    <span>0 s</span>
+                    <span>{latest.meter}</span>
+                  </span>
+                </span>
+              )}
+            </Link>
+          )}
+
+          {older.length > 0 && (
+            <ul className="border-b">
+              {older.map((post) => (
+                <li key={post.slug} className="border-t">
+                  <Link
+                    href={`/blog/${post.slug}`}
+                    className="text-foreground hover:text-muted-foreground block py-5 text-xl font-medium tracking-[-0.02em] transition-colors"
+                  >
                     {post.title}
-                  </h3>
-                  <p className="text-muted-foreground mt-1">{post.summary}</p>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <div className="text-muted-foreground max-w-2xl space-y-4">
-            <p>
-              Long-form notes on things that broke in production and how I
-              fixed them. The first ones are being written now:
-            </p>
-            <ul className="space-y-2">
-              {upcoming.map((title) => (
-                <li key={title} className="text-foreground font-serif text-lg">
-                  {title}
+                  </Link>
                 </li>
               ))}
             </ul>
-          </div>
-        )}
-      </section>
+          )}
+        </section>
 
-      <section className="mx-auto max-w-5xl px-4 py-10">
-        <div className="bg-muted rounded-2xl px-6 py-10 md:px-10">
-          <h2 className="text-foreground text-2xl md:text-3xl">
-            Building a voice agent or an AI product people have to use?
+        <section
+          aria-labelledby="book-h"
+          className="flex flex-col gap-8 py-[clamp(120px,14vw,200px)]"
+        >
+          <h2
+            id="book-h"
+            className="text-foreground m-0 max-w-[16ch] text-[clamp(36px,5.2vw,72px)] leading-[1.02] font-medium tracking-[-0.04em]"
+          >
+            Building a voice agent or an AI product{' '}
+            <span className="text-subtle">people have to use?</span>
           </h2>
-          <p className="text-muted-foreground mt-3 max-w-2xl">
+          <p className="text-muted-foreground m-0 max-w-[460px] text-lg leading-relaxed">
             I&apos;m happy to talk it through. Thirty minutes, bring the problem,
             no deck needed.
           </p>
-          <Link
-            href={BOOK_PATH}
-            className="bg-primary text-primary-foreground hover:bg-primary/90 mt-6 inline-flex h-11 items-center gap-1.5 rounded-lg px-6 font-medium transition-colors"
-          >
-            Book a 30-min call
-            <ArrowRight className="h-4 w-4" />
-          </Link>
-        </div>
-      </section>
-    </div>
+          <div>
+            <BookButton href={BOOK_PATH} />
+          </div>
+        </section>
+      </Container>
+    </>
   );
 }
